@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+	<persistence-unit name="carjampa">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<class>br.com.pb.entidades.Imagem</class>
+		<class>br.com.pb.entidades.Veiculo</class>
+		<class>br.com.pb.entidades.Marca</class>
+		<class>br.com.pb.entidades.Anuncio</class>
+		<class>br.com.pb.entidades.AnoVersao</class>
+		<class>br.com.pb.entidades.Modelo</class>
+		<class>br.com.pb.entidades.Usuario</class>
+		<class>br.com.pb.entidades.Versao</class>
+		<class>br.com.pb.entidades.Estado</class>
+		<class>br.com.pb.entidades.Cidade</class>
+		
+		<properties>
+			<!-- Configuração para o Postgres -->
+			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
+			<property name="hibernate.connection.driver_class" value="org.postgresql.Driver" />
+			<property name="hibernate.connection.url" value="jdbc:postgresql://127.0.0.1/postgres" />
+			<property name="hibernate.connection.username" value="postgres" />
+			<property name="hibernate.connection.password" value="mopa123" />
+		
+		
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="false" />
+			<property name="use_sql_comments" value="true" />
+			<!-- <property name="hibernate.hbm2ddl.auto" value="create-drop" /> -->
+		</properties>		
+	</persistence-unit>
+</persistence>
