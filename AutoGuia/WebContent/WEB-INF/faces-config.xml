@@ -5,11 +5,11 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_1.xsd"
 	version="2.1">
 
-	<!-- <navigation-rule>
+	<navigation-rule>
 		<from-view-id>*</from-view-id>
 		<navigation-case>
 			<from-outcome>veiculo</from-outcome>
-			<to-view-id>/pages/veiculo.jsf</to-view-id>
+			<to-view-id>/paginas/veiculo.jsf</to-view-id>
 			<redirect />
 		</navigation-case>
 		<navigation-case>
@@ -19,10 +19,10 @@
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>detalheCarro</from-outcome>
-			<to-view-id>/pages/detalheCarro.jsf</to-view-id>
+			<to-view-id>/paginas/detalheCarro.jsf</to-view-id>
 			<redirect />
 		</navigation-case>
-	</navigation-rule> -->
+	</navigation-rule>
 	<application>
 		<resource-bundle>
 			<base-name>META-INF/mensagens</base-name>
