@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets" 
+    xmlns:f="http://java.sun.com/jsf/core" 
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui">
+    <h:head>
+		<f:loadBundle basename="META-INF/mensagens" var="msg"/>
+    	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    	
+	    <link rel="stylesheet" href="#{facesContext.externalContext.request.contextPath}/css/custom_bootstrap.css"/>
+	    <link rel="stylesheet" href="#{facesContext.externalContext.request.contextPath}/css/bootstrap.min.css"/>
+	    <link rel="stylesheet" href="#{facesContext.externalContext.request.contextPath}/css/bootstrap-responsive.css"/>
+	    
+	    <!--  Pelo o que pude perceber o jquery.js caga as paradas do jsf -->
+	    <!-- <script src="#{facesContext.externalContext.request.contextPath}/js/jquery.js"></script> -->
+		 <script src="#{facesContext.externalContext.request.contextPath}/js/bootstrap.min.js"></script>
+		<script src="#{facesContext.externalContext.request.contextPath}/js/all.js"></script>
+		<script src="#{facesContext.externalContext.request.contextPath}/js/less-1.3.0.min.js"></script>
+		<script>
+			// Additional JS functions here
+			window.fbAsyncInit = function() {
+				FB.init({
+			    	appId      	 : '435677693206993', // App ID
+			     	channelUrl : 'http://localhost:8080/carjampa/fblogin.xhtml', // Channel File
+			     	status     	 : true, // check login status
+			     	xfbml      	 : true,  // parse XFBML
+                    cookie     : true,
+			   	});
+			};
+			
+			 // Load the SDK asynchronously
+			(function(d) {
+				var js, id = 'facebook-jssdk';
+				if (d.getElementById(id)) {
+					return;
+				}
+				js = d.createElement('script');
+				js.id = id;
+				js.async = true;
+				js.src = "//connect.facebook.net/en_US/all.js";
+				d.getElementsByTagName('head')[0].appendChild(js);
+			}(document));
+
+			function login() {
+				FB.login(function(response) {
+					if (response.authResponse) {
+						document.getElementById('token').value = FB.getAuthResponse()['accessToken'];
+						FB.api('/me', function(response) {
+							document.getElementById('nome').value = response.name;
+							document.getElementById('dataNascimento').value = response.birthday;
+							document.getElementById('email').value = response.email;
+						});
+						//document.getElementById('submitFBLogin').click();
+					}
+					else {
+						alert('Falha na autenticacao. Tente novamente.');
+					}
+				}, {
+					// Revisar scopo de permissoes da aplicacao.
+					scope : 'email,publish_stream,user_photos,friends_about_me,user_birthday'
+				});
+			}
+		</script>
+	</h:head>
+	<h:body>
+
+		<div id="fb-root"></div>
+		<div class="container-fluid">
+	    	<ui:include src="cabecalho.xhtml" />
+	    	<div class="row-fluid columns">
+				<div class="span3">
+					<ui:include src="propagandas.xhtml"/>
+				</div>
+				<div class="span6">
+					<ui:insert name="conteudo"/>
+				</div>
+				<div class="span3">
+					<ui:include src="propagandas.xhtml"/>
+				</div>
+	    	</div>
+		 </div>
+	</h:body>
+</html>

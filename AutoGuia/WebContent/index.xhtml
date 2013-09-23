@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<ui:composition   
+		xmlns="http://www.w3c.org/1999/xhtml"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:p="http://primefaces.org/ui"  
+		xmlns:f="http://java.sun.com/jsf/core"
+		template="/templates/principal.xhtml">
+		
+		<ui:define name="conteudo">
+		<div class="container-fluid">
+			<h:form id="formVeiculo" prependId="false">
+	            <p:dataGrid var="anuncio" value="#{homeBean.anuncios}" styleClass="span12" style="border: none" id="dataGrid" rows="6" columns="3" roeffect="true" paginator="true" paginatorPosition="bottom" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}">  
+	                 <p:panel  style="width: 200px">
+	                 	<h:panelGrid columns="1" columnClasses="span3">    
+	                      <p:graphicImage value="/pics/#{anuncio.urlImagemPrincipal}" width="100%" height="100%" styleClass="thumbnail"/>
+	                         <h:outputText value="#{anuncio.veiculo.modelo.marca.nome}" />  
+	                     	<h:outputText value="#{anuncio.veiculo.modelo.nome}" />
+	                     	<p:spacer height="10px" />
+	                     	<h:outputText value="#{anuncio.preco}"/>
+	                     	<h:outputText value="#{anuncio.veiculo.anoVersao} - #{anuncio.quilometragem}"/>
+	                     	<h:outputText value="#{anuncio.cidade}" />
+	                     	<h:outputText value="Tel: #{anuncio.telefone1}" />
+	                     	<h:outputText value="Tel: #{anuncio.telefone2}" />
+	                     </h:panelGrid>
+	                    </p:panel>  
+	            </p:dataGrid> 
+		    </h:form>
+		</div>
+		</ui:define>	
+</ui:composition>
