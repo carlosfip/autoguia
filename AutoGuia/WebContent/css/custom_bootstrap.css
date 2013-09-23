@@ -134,3 +134,7 @@
     width : 80% !important;
 }
 
+.thumbcars {
+  height: 323px !important;
+  max-height: 323px;
+}
