@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<ui:composition xmlns="http://www.w3c.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+			<div class="span12">
+				<!-- <h:panelGroup>
+					<p:media value="http://www.youtube.com/watch?v=1p5Y-c2eWO8" width="420" height="315" player="flash"/>  
+				</h:panelGroup> -->
+				<h:panelGroup>
+					<p:carousel pageLinks="4" autoPlayInterval="400" style="width: 404px; height: 315px;"  
+				        numVisible="1" effect="easeInStrong" circular="true">  
+				        <p:graphicImage value="/pics/civic2000.jpg" style="width: 373px; height: 281px;"/>
+					    <p:graphicImage value="/pics/comet2008.jpg" style="width: 373px; height: 281px;"/>  
+					    <p:graphicImage value="/pics/s10.jpg"       style="width: 373px; height: 281px;"/>
+					    <p:graphicImage value="/pics/escort.jpg"    style="width: 373px; height: 281px;"/>
+				    </p:carousel>  
+				</h:panelGroup>
+			</div>
+</ui:composition>
