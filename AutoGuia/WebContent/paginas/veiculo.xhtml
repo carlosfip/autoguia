@@ -98,14 +98,14 @@
 								<h:outputLabel value="#{msg['veiculo.placa']}" for="placa">
 									<h:outputText value="  *" style="color:red"/>
 								</h:outputLabel>
-								<p:inputText value="#{veiculoBean.placa}" id="placa" maxlength="7" styleClass="span3" />
+								<p:inputText value="#{veiculoBean.placa}" id="placa" maxlength="7" styleClass="span3" style="width:100%"/>
 							</div>
 						
 							<div class="span3">
 								<h:outputLabel value="#{msg['veiculo.quilometragem']}" for="quilometragem">
 									<h:outputText value="  *" style="color:red"/>
 								</h:outputLabel>
-								<p:inputText value="#{veiculoBean.anuncio.quilometragem}" id="quilometragem" styleClass="span3"/>
+								<p:inputText value="#{veiculoBean.anuncio.quilometragem}" id="quilometragem" styleClass="span3" style="width:100%"/>
 							</div>
 							<div class="span2">
 								<h:outputLabel value="#{msg['veiculo.gas']}" for="gas">
@@ -131,11 +131,13 @@
 									<p:pickList id="acessorios" value="#{veiculoBean.acessorios}" var="acessorio" itemLabel="#{acessorio}" itemValue="#{acessorio}" />
 								</fieldset> 
 							</div>
+						</div>
+						<div class="row">
 							<div class="span6">
 								<fieldset>
 									<!-- <legend>#{msg['veiculo.acessorios']}</legend> -->
 									<legend>Imagens</legend>
-									
+									<p:pickList id="acessorios2" value="#{veiculoBean.acessorios}" var="acessorio" itemLabel="#{acessorio}" itemValue="#{acessorio}" />
 								</fieldset> 
 							</div>
 						</div>
@@ -143,11 +145,11 @@
 						<fieldset>
 							<legend>Dados para Contato</legend>
 							<div class="row">
-								<div class="span">
+								<div class="span2">
 									<h:outputLabel value="#{msg['veiculo.uf']}" for="uf">
 											<h:outputText value="  *" style="color:red"/>
 									</h:outputLabel>
-									<p:selectOneMenu value="#{veiculoBean.estado.id}" id="uf" style="width:100%">
+									<p:selectOneMenu value="#{veiculoBean.estado.id}" id="uf" style="width: 100%" panelStyle="span2">
 											<f:selectItem itemLabel="PB" itemValue="25" />
 											<f:selectItem itemLabel="PE" itemValue="26"/>
 											<f:selectItems value="#{veiculoBean.estados}"  var="estado" itemLabel="#{estado.sigla}" itemValue="#{estado.id}" />
@@ -158,22 +160,24 @@
 									<h:outputLabel value="#{msg['veiculo.cidade']}" for="cidade">
 											<h:outputText value="  *" style="color:red"/>
 									</h:outputLabel>
-									<p:selectOneMenu value="#{veiculoBean.cidade.id}" id="cidade" style="width:100%">
+									<p:selectOneMenu value="#{veiculoBean.cidade.id}" id="cidade" style="width: 100%;" panelStyle="span4">
 										<f:selectItem itemLabel="#{veiculoBean.estado.capital}"></f:selectItem>
 										<f:selectItems value="#{veiculoBean.cidades}" var="cidade" itemLabel="#{cidade.nome}" itemValue="#{cidade.id}"/>
 									</p:selectOneMenu>
 								</div>
-								<div class="span3">
-									<h:outputLabel value="#{msg['veiculo.telefone1']}" for="telefone1">
+							</div>
+							<div class="row">
+								<div class="span4">
+									<h:outputLabel value="#{msg['veiculo.telefone1']}" for="telefone1" >
 										<h:outputText value="  *" style="color:red"/>
 									</h:outputLabel>
-									<p:inputText value="#{veiculoBean.anuncio.telefone1}" id="telefone1" styleClass="span3"/>
+									<p:inputText value="#{veiculoBean.anuncio.telefone1}" id="telefone1" styleClass="span4" style="width:100%"/>
 								</div>
-								<div class="span3">
+								<div class="span4">
 									<h:outputLabel value="#{msg['veiculo.telefone2']}" for="telefone2">
 										<h:outputText value="  *" style="color:red"/>
 									</h:outputLabel>
-									<p:inputText value="#{veiculoBean.anuncio.telefone2}" id="telefone2" styleClass="span3"/>
+									<p:inputText value="#{veiculoBean.anuncio.telefone2}" id="telefone2" styleClass="span4" style="width:100%"/>
 								</div>
 							</div>
 						</fieldset>
@@ -184,7 +188,7 @@
 									<h:outputLabel value="#{msg['veiculo.preco']}" for="preco">
 										<h:outputText value="  *" style="color:red"/>
 									</h:outputLabel>
-									<p:inputText value="#{veiculoBean.anuncio.preco}" id="preco"  styleClass="span2"/>
+									<p:inputText value="#{veiculoBean.anuncio.preco}" id="preco"  styleClass="span2" style="width:100%"/>
 								</div>
 						</div>
 						<br />
