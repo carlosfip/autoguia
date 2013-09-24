@@ -52,7 +52,6 @@ public class HomeBean {
 					break;
 				}
 			}
-			anuncios.add(v);
 		}
 		return anuncios;
 	}
