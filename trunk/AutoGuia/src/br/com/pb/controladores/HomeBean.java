@@ -35,9 +35,13 @@ public class HomeBean {
 	@Setter
 	private List<Anuncio> anuncios;
 	
+	@Getter @Setter
+	private int qtdeAnuncios;
+	
 	@PostConstruct
 	public void init() {
-		
+		getAnuncios();
+		setQtdeAnuncios(anuncios.size() - 1);
 	}
 	
 	public String listarAnuncios() {
@@ -74,6 +78,7 @@ public class HomeBean {
 				}
 			}
 		}
+		
 		return anuncios;
 //		return new ArrayList<Anuncio>();
 	}

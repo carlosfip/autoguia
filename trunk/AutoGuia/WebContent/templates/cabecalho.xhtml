@@ -1,74 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<ui:composition xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui"
-	xmlns:f="http://java.sun.com/jsf/core">
-	
-
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" xmlns:f="http://java.sun.com/jsf/core">
 	<h:form id="formulario">
 		<div data-spy="affix" data-offset-top="111">
-		
 		    <div class="navbar navbar-fixed navbar-inverse">
-              <div class="navbar-inner">
-                  <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                  </a>
-                  		<a href="#" class="brand">AutoGuia</a>
-                  
-                  <div class="nav-collapse collapse">
-                    <ul class="nav">
-                      <li><h:commandLink action="#{homeBean.listarAnuncios}">
+				<div class="navbar-inner">
+					<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    	<span class="icon-bar"></span>
+                    	<span class="icon-bar"></span>
+                    	<span class="icon-bar"></span>
+                  	</a>
+                  	<a href="#" class="brand">AutoGuia</a>
+					<div class="nav-collapse collapse">
+                    	<ul class="nav">
+                      		<li>
+                      			<h:commandLink action="#{homeBean.listarAnuncios}">
 									<h:outputText value="Inicio" />
-					      </h:commandLink></li>
-                      <li><h:commandLink action="#{veiculoBean.cadastrarVeiculo}">
+					      		</h:commandLink>
+					      	</li>
+                      		<li>
+                      			<h:commandLink action="#{veiculoBean.cadastrarVeiculo}">
 									<h:outputText value="Anunciar" />
-					      </h:commandLink>
-					  </li>
-                      <!-- <li><a href="#">Link</a></li> -->
-                      <li class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">Dropdown <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                          <li><a href="#">Ação</a></li>
-                          <li><a href="#">Outra ação</a></li>
-                          <li><a href="#">Algo a mais aqui</a></li>
-                          <li class="divider"></li>
-                          <li class="nav-header">Nav header</li>
-                          <li><a href="#">Link separador</a></li>
-                          <li><a href="#">Um ou mais links separados</a></li>
-                        </ul>
-                      </li>
-                    </ul>
-                    <div class="span4 navbar-search">
-                        <p:autoComplete 
-								id="buscar" 
-								minQueryLength="3"
-								styleClass="span4"   
-								maxResults="8"
-								scrollHeight="470"
-								var="v"
-			                    value="#{homeBean.campoPesquisa}" effect="fade"  
-			                    completeMethod="#{homeBean.complete}">
-				                 <p:column style="border:none">  
-				                    <p:graphicImage styleClass="img-rounded" value="/pics/#{v.urlImagemPrincipal}" width="75" height="75"/>  
-				                </p:column>
-				                 <p:column style="border:none">  
-				                 	<p:outputLabel value="#{v.veiculo.modelo.nome} - Ano #{v.veiculo.ano}"></p:outputLabel>
-				                </p:column> 
-					   </p:autoComplete>
-	 	    		   <p:watermark for="buscar" value="Pesquise por Nome ou Ano ou Marca "/>
-                    </div>
-                  <ul class="nav pull-right">
-                    	<!--<h:commandLink onclick="facebookLogin();">  
-        					<h:graphicImage  value="/recursos/imagens/login_facebook.jpg"  width="160"/>          					  
-    					</h:commandLink>   -->
-    					<p:commandButton id="cadastroButton" value="Cadastro" type="button" />
-    					<p:overlayPanel id="loginPanel" for="cadastroButton"  showEffect="fade" hideEffect="fade">
-    						<h:panelGroup>
-								<div class="container">
+					      		</h:commandLink>
+					  		</li>
+                      		<li class="dropdown">
+                        		<a data-toggle="dropdown" class="dropdown-toggle" href="#">Dropdown <b class="caret"></b></a>
+                        		<ul class="dropdown-menu">
+                          			<li><a href="#">Ação</a></li>
+                          			<li><a href="#">Outra ação</a></li>
+                          			<li><a href="#">Algo a mais aqui</a></li>
+                          			<li class="divider"></li>
+                          			<li class="nav-header">Nav header</li>
+                          			<li><a href="#">Link separador</a></li>
+                          			<li><a href="#">Um ou mais links separados</a></li>
+                        		</ul>
+                      		</li>
+                    	</ul>
+                    	<div class="span4 navbar-search">
+                        	<p:autoComplete id="buscar" minQueryLength="3" styleClass="span4" maxResults="8" scrollHeight="470" var="v" value="#{homeBean.campoPesquisa}" effect="fade" completeMethod="#{homeBean.complete}">
+								<p:column style="border:none">  
+									<p:graphicImage styleClass="img-rounded" value="/pics/#{v.urlImagemPrincipal}" width="75" height="75"/>  
+								</p:column>
+								<p:column style="border:none">  
+									<p:outputLabel value="#{v.veiculo.modelo.nome} - Ano #{v.veiculo.ano}"></p:outputLabel>
+								</p:column> 
+							</p:autoComplete>
+							<p:watermark for="buscar" value="Pesquise por Nome ou Ano ou Marca "/>
+                    	</div>
+						<ul class="nav pull-right">
+							<li class="dropdown">
+								<a class="dropdown-toggle" href="#" data-toggle="dropdown">Login</a>
+								<div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;">
+									<!-- Implementacao do Dropdown de login (a confirmar) -->
+									<!-- 
 									<h:form id="formUsuario" prependId="false">
 										<div class="row" style="width: 260px !important;">
 											<div class="span2">
@@ -124,14 +108,13 @@
 											</div>
 										</div>					
 									</h:form>
+									-->	
 								</div>
-							</h:panelGroup>
-						</p:overlayPanel>
-						<p:commandButton id="loginButton" value="Login" type="button" />
-                    </ul> 
-                  </div><!-- /.nav-collapse -->
-                </div>
-              </div><!-- /navbar-inner -->
-            </div>
-          </h:form>
+							</li>
+	                    </ul> 
+					</div><!-- /.nav-collapse -->
+				</div>
+			</div><!-- /navbar-inner -->
+		</div>
+	</h:form>
 </ui:composition>
