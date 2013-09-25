@@ -9,8 +9,9 @@
                     	<span class="icon-bar"></span>
                     	<span class="icon-bar"></span>
                     	<span class="icon-bar"></span>
+                    	<span class="icon-bar"></span>
                   	</a>
-                  	<a href="#" class="brand">AutoGuia</a>
+	                <a href="#" class="brand">AutoGuia</a>
 					<div class="nav-collapse collapse">
                     	<ul class="nav">
                       		<li>
@@ -23,7 +24,7 @@
 									<h:outputText value="Anunciar" />
 					      		</h:commandLink>
 					  		</li>
-                      		<li class="dropdown">
+                      		<!-- <li class="dropdown">
                         		<a data-toggle="dropdown" class="dropdown-toggle" href="#">Dropdown <b class="caret"></b></a>
                         		<ul class="dropdown-menu">
                           			<li><a href="#">Ação</a></li>
@@ -34,85 +35,27 @@
                           			<li><a href="#">Link separador</a></li>
                           			<li><a href="#">Um ou mais links separados</a></li>
                         		</ul>
-                      		</li>
+                      		</li> -->
                     	</ul>
-                    	<div class="span4 navbar-search">
-                        	<p:autoComplete id="buscar" minQueryLength="3" styleClass="span4" maxResults="8" scrollHeight="470" var="v" value="#{homeBean.campoPesquisa}" effect="fade" completeMethod="#{homeBean.complete}">
-								<p:column style="border:none">  
-									<p:graphicImage styleClass="img-rounded" value="/pics/#{v.urlImagemPrincipal}" width="75" height="75"/>  
-								</p:column>
-								<p:column style="border:none">  
-									<p:outputLabel value="#{v.veiculo.modelo.nome} - Ano #{v.veiculo.ano}"></p:outputLabel>
-								</p:column> 
-							</p:autoComplete>
-							<p:watermark for="buscar" value="Pesquise por Nome ou Ano ou Marca "/>
-                    	</div>
 						<ul class="nav pull-right">
 							<li class="dropdown">
 								<a class="dropdown-toggle" href="#" data-toggle="dropdown">Login</a>
 								<div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;">
-									<!-- Implementacao do Dropdown de login (a confirmar) -->
-									<!-- 
-									<h:form id="formUsuario" prependId="false">
-										<div class="row" style="width: 260px !important;">
-											<div class="span2">
-												<h:inputHidden id="token" value="#{usuarioBean.token}" />
-												<p:commandLink id="submitFBLogin" actionListener="#{usuarioBean.loginFacebook}" update="nome,dataNascimento,cpf,email"/>
-												<h:outputLabel value="#{msg['usuario.msgfacebook']}" for="linkFacebook" />
-											</div>
-											<div class="span3">
-												<h:outputLink id="linkFacebook" onclick="login(); return false;">
-													<h:graphicImage id="imgFacebook" value="/img/login_facebook.jpg" width="126" height="35" style="border: 0" />
-												</h:outputLink>
-											</div>
-										</div>
-										<p:spacer height="5px"></p:spacer>
-										<div class="row">
-											<div class="span3">
-												<h:outputLabel value="#{msg['usuario.nome']}" for="nome">
-													<h:outputText value="  *" style="color:red"/>
-												</h:outputLabel>
-												<p:inputText value="#{usuarioBean.usuario.nome}" id="nome"  styleClass="span3"/>
-											</div>
-										</div>
-										<div class="row">
-											<div class="span3">
-												<h:outputLabel value="#{msg['usuario.email']}" for="email">
-													<h:outputText value="  *" style="color:red"/>
-												</h:outputLabel>
-												<p:inputText value="#{usuarioBean.usuario.email}" id="email"  styleClass="span3"/>
-											</div>
-										</div>
-										<div class="row calendar">
-											<div class="span3">
-												<h:outputLabel value="#{msg['usuario.datanascimento']}" for="dataNascimento">
-													<h:outputText value="  *" style="color:red"/>
-												</h:outputLabel>
-												<p:calendar value="#{usuarioBean.usuario.datanascimento}" id="dataNascimento"  styleClass="span3" maxlength="10">
-													<f:convertDateTime pattern="dd/MM/yyyy" />
-												</p:calendar>
-											</div>
-										</div>
-										<div class="row">
-											<div class="span3">
-												<h:outputLabel value="#{msg['usuario.cpf']}" for="cpf">
-													<h:outputText value="  *" style="color:red"/>
-												</h:outputLabel>
-												<p:inputText value="#{usuarioBean.usuario.cpf}" id="cpf"  styleClass="span3"/>
-											</div>
-										</div>	
-										<div class="row">
-											<div class="span3" style="text-align: center !important;">
-												<p:commandButton value="Cadastrar" action="#{usuarioBean.cadastrar}" styleClass="btn btn-primary"/>
-												<p:button value="Cancelar"/>
-											</div>
-										</div>					
-									</h:form>
-									-->	
 								</div>
 							</li>
 	                    </ul> 
 					</div><!-- /.nav-collapse -->
+					  <div class="navbar-search">
+                      	<p:autoComplete id="buscar" minQueryLength="3" styleClass="span4" maxResults="8" scrollHeight="470" var="v" value="#{homeBean.campoPesquisa}" effect="fade" completeMethod="#{homeBean.complete}">
+							<p:column style="border:none">  
+								<p:graphicImage styleClass="img-rounded" value="/pics/#{v.urlImagemPrincipal}" width="75" height="75"/>  
+							</p:column>
+							<p:column style="border:none">  
+								<p:outputLabel value="#{v.veiculo.modelo.nome} - Ano #{v.veiculo.ano}"></p:outputLabel>
+							</p:column> 
+						</p:autoComplete>
+						<p:watermark for="buscar" value="Pesquise por Nome ou Ano ou Marca "/>
+                	</div>
 				</div>
 			</div><!-- /navbar-inner -->
 		</div>
