@@ -17,6 +17,14 @@ import javax.persistence.Transient;
 import lombok.Getter;
 import lombok.Setter;
 
+import org.hibernate.search.annotations.Analyze;
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Index;
+import org.hibernate.search.annotations.Indexed;
+import org.hibernate.search.annotations.IndexedEmbedded;
+import org.hibernate.search.annotations.Store;
+
+@Indexed
 @Entity(name="T_anuncio")
 public class Anuncio implements Serializable{
 	/**
@@ -45,6 +53,7 @@ public class Anuncio implements Serializable{
 	
 	@Getter
 	@Setter
+	@IndexedEmbedded
 	@OneToOne
 	@JoinColumn(name="idveiculo")
 	private Veiculo veiculo;
@@ -64,6 +73,7 @@ public class Anuncio implements Serializable{
 	
 	@Getter
 	@Setter
+	@Field(index=Index.YES, analyze=Analyze.NO, store=Store.YES)
 	private String cidade;
 	
 	@Getter
