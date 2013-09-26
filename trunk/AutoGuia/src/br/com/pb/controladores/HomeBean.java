@@ -17,6 +17,7 @@ import br.com.pb.dao.DAO;
 import br.com.pb.entidades.Anuncio;
 import br.com.pb.entidades.Imagem;
 import br.com.pb.entidades.Anuncio;
+import br.com.pb.util.LuceneUtil;
 import br.com.pb.util.TratamentoImagens;
 
 @SuppressWarnings("unused")
@@ -40,15 +41,20 @@ public class HomeBean {
 	
 	@PostConstruct
 	public void init() {
-		getAnuncios();
-		setQtdeAnuncios(anuncios.size() - 1);
+			
+		campoPesquisa = "";
+		//setQtdeAnuncios(getAnuncios().size() - 1);
 	}
 	
+	public void indexarLucene(){
+		anuncioDAO.inicializarLucene();
+	}
 	public String listarAnuncios() {
 		return "listagemAnuncios"; 
 	}
 	public List<Anuncio> complete(String query) {
-		List<Anuncio> anuncios = anuncioDAO.listaTodos();
+		List<Anuncio> anuncios = anuncioDAO.pesquisarLucene(query, LuceneUtil.attributosIndexados(Anuncio.class));
+		//List<Anuncio> anuncios = anuncioDAO.listaTodos();
 		for (Anuncio v : anuncios) {
 			for(Imagem imagem :v.getImagens()){
 				if (("S").equals(imagem.getIsimagemprincipal())){
@@ -78,7 +84,6 @@ public class HomeBean {
 				}
 			}
 		}
-		
 		return anuncios;
 //		return new ArrayList<Anuncio>();
 	}

@@ -11,6 +11,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.search.annotations.Analyzer;
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Indexed;
+import org.hibernate.search.annotations.IndexedEmbedded;
+import org.hibernate.search.annotations.Store;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -21,6 +27,7 @@ import lombok.Setter;
  */
 @Entity
 @Table(name="t_modelo")
+@Indexed
 public class Modelo implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -32,10 +39,12 @@ public class Modelo implements Serializable {
 	
 	@Getter
 	@Setter
+	@Field(store = Store.YES)
 	private String nome;
 	
 	@Getter
 	@Setter
+	@IndexedEmbedded
 	@ManyToOne
 	@JoinColumn(name="idmarca")
 	private Marca marca;
