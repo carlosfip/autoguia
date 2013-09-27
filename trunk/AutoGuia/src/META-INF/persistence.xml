@@ -26,6 +26,10 @@
 			<property name="hibernate.format_sql" value="false" />
 			<property name="use_sql_comments" value="true" />
 			<!-- <property name="hibernate.hbm2ddl.auto" value="create-drop" /> -->
+						<!-- Hibernate Search -->
+<!-- 			<property name="hibernate.search.indexing_strategy" value="manual"/> -->
+			<property name="hibernate.search.default.directory_provider" value="filesystem"/>
+			<property name="hibernate.search.default.indexBase" value="/AutoGuia-index"/>
 		</properties>		
 	</persistence-unit>
 </persistence>
