@@ -33,8 +33,13 @@ public class HomeBean {
 	@Getter
 	@Setter
 	private String campoPesquisa;
+	
 	@Setter
 	private List<Anuncio> anuncios;
+	
+	@Setter
+	@Getter
+	private Anuncio anuncio;
 	
 	@Getter @Setter
 	private int qtdeAnuncios;
@@ -51,6 +56,10 @@ public class HomeBean {
 	}
 	public String listarAnuncios() {
 		return "listagemAnuncios"; 
+	}
+	public String detalharCarro(Anuncio anuncio){
+		this.anuncio = anuncio;
+		return "detalheCarro"; 
 	}
 	public List<Anuncio> complete(String query) {
 		List<Anuncio> anuncios = anuncioDAO.pesquisarLucene(query, LuceneUtil.attributosIndexados(Anuncio.class));
@@ -96,6 +105,7 @@ public class HomeBean {
 	     return fotos;
 	     
 	}
+	
 	
      private String getIdCarroViaGet() {
           
