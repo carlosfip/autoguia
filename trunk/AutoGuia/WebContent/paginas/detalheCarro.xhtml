@@ -6,14 +6,15 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:f="http://java.sun.com/jsf/core"
-	template="/pages/templateCarro.xhtml">
+	template="/templates/principal.xhtml">
 	<ui:define name="conteudo">
 		<h:form>
 			<div class="row">
 				<div class="span3 offset1">
-					<p:galleria value="#{homeBean.fotos}" var="image" panelWidth="400"
+					<p:galleria value="#{homeBean.anuncio.imagens}" var="image" panelWidth="400"
 						panelHeight="250" showCaption="false">
-						<p:graphicImage value="/recursos/fotosCarro/#{image}" />
+						#{image.urlimagem}
+						<p:graphicImage value="/pics/#{image.urlimagem}" />
 					</p:galleria>
 				</div>
 				<div class="span5 offset1">
