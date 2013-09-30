@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" xmlns:f="http://java.sun.com/jsf/core">
-	<h:form id="formulario">
+	<h:form prependId="false">
 		<div data-spy="affix" data-offset-top="111">
 		    <div class="navbar navbar-fixed navbar-inverse">
 				<div class="navbar-inner">
@@ -45,10 +45,13 @@
 									<h:outputText value="Reindexar Lucene" />													
 								</p:commandLink>
 							</li>	
-							<li class="dropdown">
-								<a class="dropdown-toggle" href="#" data-toggle="dropdown">Login</a>
-								<div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;">
-								</div>
+							<li>
+								<h:inputHidden id="token" value="#{usuarioBean.token}" />
+								<h:inputHidden id="nome" value="#{usuarioBean.usuario.nome}" />
+								<h:inputHidden id="email" value="#{usuarioBean.usuario.email}" />
+								<h:inputHidden id="datanascimento" value="#{usuarioBean.usuario.datanascimento}" />
+								<p:commandLink id="asd" actionListener="#{usuarioBean.loginFacebook}" style="display: none;"/>
+								<h:outputLink id="loginFacebook" onclick="login(); return false;">Log in</h:outputLink>
 							</li>
 	                    </ul> 
 					</div><!-- /.nav-collapse -->
