@@ -2,6 +2,8 @@
     <wb-module deploy-name="AutoGuia">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/javase"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/zxing"/>
         <property name="context-root" value="AutoGuia"/>
         <property name="java-output-path" value="/AutoGuia/build/classes"/>
     </wb-module>
