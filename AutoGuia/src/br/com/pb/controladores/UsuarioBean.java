@@ -29,23 +29,23 @@ public class UsuarioBean implements Serializable {
      @Getter
      @Setter
      private Usuario usuario;
-     
+
      @Getter
      @Setter
      private String token;
 
-     
+
      @PostConstruct
      public void init() {
-    	 usuario = new Usuario();
+          usuario = new Usuario();
      }
-     
+
      public String cadastrar() {
           usuarioDAO.adiciona(usuario);
           return "sucesso";
      }
-     
-   /*  public void loginFacebook() throws IOException{
+
+     public void loginFacebook() throws IOException{
           HttpServletRequest request = (HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest();
           HttpSession session = request.getSession();
           //Adicionar acima verificacao de passagem do token no request
@@ -56,7 +56,7 @@ public class UsuarioBean implements Serializable {
           else {
                //TODO Adicionar tramento caso token nao tenha sido capturado.
           }
-          FacesContext.getCurrentInstance().getExternalContext().redirect("fblogin.jsf");
-     }*/
-     
+          FacesContext.getCurrentInstance().getExternalContext().redirect("index.jsf");
+     }
+
 }
