@@ -17,7 +17,7 @@
 	<!-- Habilita a configuração de beans via anotações -->
 	<context:annotation-config />
 	
-	<!-- Faz a indentificação dos beans anotados com @Service, @Repository e @Controller -->
+	<!-- Faz a identificação dos beans anotados com @Service, @Repository e @Controller -->
 	<context:component-scan base-package="br.com.anexo" />
 		
 	<beans>
@@ -40,11 +40,6 @@
 		<!-- Hibernate Session Factory -->
 		<bean id="sessionFactory" factory-bean="entityManagerFactory" factory-method="getSessionFactory" />
 		
-		<!-- DEFINIÇÃO DOS DAOS DA APLICAÇÃO -->
-		<!-- <bean id="anuncioDAO" class="br.com.anexo.dao.impl.AnuncioDAO">
-			<constructor-arg value="br.com.anexo.entidades.Anuncio" />
-		</bean> -->
-	
 		<!-- DEFINIÇÃO DOS DAOS DA APLICAÇÃO -->
 		<!-- <bean id="daoUsuario" class="br.com.neus.app.dao.GenericDaoJpa">
 			<constructor-arg value="br.com.neus.app.entidades.Usuario" />
