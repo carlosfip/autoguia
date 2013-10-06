@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	xmlns:f="http://java.sun.com/jsf/core">
+	
+	<script src="#{facesContext.externalContext.request.contextPath}/recursos/scripts/tinycon.min.js"></script>
+	
+	<script type="text/javascript">
+		//<![CDATA[
+		jQuery(document).ready(function(){
+			
+			jQuery('.popover-erros').popover({html : true});
+			jQuery('.popover-erros').live('click',function(e){
+				jQuery('.popover-content').html(content);
+				jQuery('.popover-erros').next().find('.popover-title:first').html('Erros encontrados <a href="#" class="icon-trash pull-right erro-ajax-trash"/ >');
+			});
+
+			jQuery('.erro-ajax-trash').live('click',function(e){
+				
+				var i = jQuery(this).data('erro-id');
+				var mapa = jQuery('body').data('mapaErros', null);
+				content = null;
+				dialogAjaxErroHandler.hide();
+				jQuery('.popover-erros').popover('hide');
+				jQuery('.popover-erros').html('');
+				
+				Tinycon.setBubble();
+			});
+
+			jQuery('.erro-ajax').live('click',function(e){
+				
+				var i = jQuery(this).data('erro-id');
+				var mapa = jQuery('body').data('mapaErros');
+
+				jQuery('.dialogajaxerrohandler-servidor').html(mapa[i].hostname);
+				jQuery('.dialogajaxerrohandler-tipo').html(mapa[i].name);
+				jQuery('.dialogajaxerrohandler-mensagem').html(mapa[i].message);
+				jQuery('.dialogajaxerrohandler-stack').html(mapa[i].stacktrace);
+				jQuery(this).addClass('erro-ajax-read');
+				dialogAjaxErroHandler.show();
+
+			});
+		});
+
+		var content = null;
+		function gerarPopoverErros(){
+			var mapa = jQuery('body').data('mapaErros');
+			if(mapa){
+
+				Tinycon.setBubble(mapa.length);
+				
+				jQuery('.popover-erros').html('<span class="badge badge-important">'+ mapa.length +'</span>');
+				content = '<div class="erro-ajax-overflow"><table class="table table-hover table-bordered table-striped-">';
+				content += '<tbody>';
+					jQuery.each(mapa, function(i,v){
+						content += '<tr><td class="text-left"><a class="erro-ajax" data-erro-id="'+ i +'" href="#">' + mapa[i].name + '</a></td></tr>';
+					});				
+				content += '</tbody></div><br/>';
+				
+			}				
+		}
+
+		//Deprecated
+		function ajaxHandler(error, response){
+
+	    	var e = new Object();
+		  	e.hostname = error['error-hostname'];
+		  	e.message = error['error-message'];
+		  	e.name = error['error-name'];
+		  	e.stacktrace = error['error-stacktrace'];
+		  	
+			if(jQuery('body').data('mapaErros') == undefined){
+				jQuery('body').data('mapaErros', []);
+			}
+
+			array = jQuery('body').data('mapaErros');
+		    if(array){
+		    	array.push(e);
+		    	jQuery('body').data('mapaErros',array);
+			}else{
+				jQuery('body').data('mapaErros',[e]);						    	    
+			}
+			
+			jQuery('.popover-erros').popover('hide');
+			gerarPopoverErros();
+		}			
+
+		function tratarExcecao(host, cause, message, strackTrace){
+
+	    	var e = new Object();
+	    	e.hostname = host;
+		  	e.message = message;
+		  	e.name = cause;
+		  	e.stacktrace = strackTrace;
+
+			if(jQuery('body').data('mapaErros') == undefined){
+				jQuery('body').data('mapaErros', []);
+			}
+
+			array = jQuery('body').data('mapaErros');
+		    if(array){
+		    	array.push(e);
+		    	jQuery('body').data('mapaErros',array);
+			}else{
+				jQuery('body').data('mapaErros',[e]);						    	    
+			}
+			
+			jQuery('.popover-erros').popover('hide');
+					  	
+			gerarPopoverErros();	
+				  				
+		}
+		
+		//]]>
+	</script>
+	
+	<h:form>
+		
+			<!-- ViewExpiredException -->  
+<!-- 			<pe:ajaxErrorHandler type="javax.faces.application.ViewExpiredException" button="Reload"  -->
+<!-- 			buttonOnclick="document.location.href=document.location.href;"  -->
+<!-- 			body="Devido a inatividade nesta página será necessário recarregar a mesma."  -->
+<!-- 			title="Página expirada!"/> -->
+<!--  			<pe:ajaxErrorHandler button="Fechar" onerror="ajaxHandler(error, response); return false;"/> -->
+ 			
+			<!-- AJAX actions, which throw exceptions -->  
+<!-- 			<p:commandButton action="#{ocorrenciaControlador.apagar()}" value="apagar" ajax="false" type="submit" immediate="true"/> -->
+<!-- 			<p:commandButton action="#{ocorrenciaControlador.teste()}" value="teste" /> -->
+<!-- 			<p:commandButton action="#{ocorrenciaControlador.actionSimulateViewExpiredException}" value="test ViewExpiredException" />   -->
+<!-- 			<pe:ajaxErrorHandler/> -->
+<!-- 			<p:commandButton action="#{ocorrenciaControlador.actionThrowNullPointer}" value="test NullPoinerException" />   -->
+<!-- 			<p:commandButton action="#{ocorrenciaControlador.actionWrappedException}" value="test IllegalStateException" />  	 -->
+				
+			<p:dialog header="Desculpe!" widgetVar="dialogAjaxErroHandler">
+	            <h:form class="container">  
+	                <p:tabView>  
+	                    <p:tab title="Mensagem">  
+	                    	
+	                    	<h:panelGroup layout="block" styleClass="row">
+		                    	<h:panelGroup layout="block" styleClass="span12">
+								    <dl class="dl-horizontal">
+									    <dt>Servidor</dt>
+									    <dd class="dialogajaxerrohandler-servidor">...</dd>
+									    <dt>Tipo</dt>
+									    <dd class="dialogajaxerrohandler-tipo">...</dd>			
+									    <dt>Mensagem</dt>
+									    <dd class="dialogajaxerrohandler-mensagem">...</dd>								    				    
+								    </dl>                    		
+		                    	</h:panelGroup>
+	                    	</h:panelGroup>
+	  
+	                    </p:tab>  
+	                    <p:tab title="Detalhes">
+	                    	<h:panelGroup layout="block" styleClass="row">
+		                    	<h:panelGroup layout="block"  styleClass="span12">
+			                        <div style="overflow: auto; height: 320px;" >
+			                        	<code class="dialogajaxerrohandler-stack">
+			                        	</code>
+			                        </div>  
+		                    	</h:panelGroup>
+	                    	</h:panelGroup>
+	                    </p:tab>  
+	                </p:tabView>  
+	                <p:spacer height="10px"/>
+	                <div class="row">
+	                	<div class="span12 text-center">
+		                	<a href="#" class="btn" onclick="dialogAjaxErroHandler.hide();">Fechar</a>
+	                	</div>
+	                </div>
+	            </h:form>  			
+			</p:dialog>			
+ 			
+	</h:form>
+</ui:composition>
