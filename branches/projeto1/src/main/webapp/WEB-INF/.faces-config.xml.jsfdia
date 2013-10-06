@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:*" PATH="*" SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:0" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="logGeral::#paginas#logs#log-geral.jsf"
+    NAME="output" PATH="/paginas/logs/log-geral.jsf"
+    TARGET="rules:#paginas#logs#log-geral.jsf" TITLE="logGeral" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:*:1" PATH="*" SHAPE="32,129,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:1" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="login::#paginas#usuarios#login.jsf"
+    NAME="output" PATH="/paginas/usuarios/login.jsf"
+    TARGET="rules:#paginas#usuarios#login.jsf" TITLE="login" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:*:2" PATH="*" SHAPE="32,241,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:2" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="inicio::#paginas#index.xhtml" NAME="output"
+    PATH="/paginas/index.xhtml" TARGET="rules:#paginas#index.xhtml"
+    TITLE="inicio" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:*:3" PATH="*" SHAPE="32,353,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:3" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="usuarios::#paginas#usuarios#usuarios.jsf"
+    NAME="output" PATH="/paginas/usuarios/usuarios.jsf"
+    TARGET="rules:#paginas#usuarios#usuarios.jsf" TITLE="usuarios" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:*:4" PATH="*" SHAPE="32,465,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:4" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="cadastrarUsuario::#paginas#usuarios#cadastrarUsuario.jsf"
+    NAME="output" PATH="/paginas/usuarios/cadastrarUsuario.jsf"
+    TARGET="rules:#paginas#usuarios#cadastrarUsuario.jsf"
+    TITLE="cadastrarUsuario" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:*:5" PATH="*" SHAPE="32,577,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:5" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="minhaConta::#paginas#usuarios#minha_conta.jsf" NAME="output"
+    PATH="/paginas/usuarios/minha_conta.jsf"
+    TARGET="rules:#paginas#usuarios#minha_conta.jsf" TITLE="minhaConta" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:*:6" PATH="*" SHAPE="32,689,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:6" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="cadastrarPapel::#paginas#papeis#papeis.jsf"
+    NAME="output" PATH="/paginas/papeis/papeis.jsf"
+    TARGET="rules:#paginas#papeis#papeis.jsf" TITLE="cadastrarPapel" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#paginas#usuarios#alterar_minha_conta.jsf"
+  PATH="/paginas/usuarios/alterar_minha_conta.jsf" SHAPE="240,705,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#paginas#usuarios#minha_conta.jsf"
+  PATH="/paginas/usuarios/minha_conta.jsf" SHAPE="240,369,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#paginas#usuarios#resetar_senha.jsf"
+  PATH="/paginas/usuarios/resetar_senha.jsf" SHAPE="240,593,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#paginas#papeis#papeis.jsf"
+  PATH="/paginas/papeis/papeis.jsf" SHAPE="240,481,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#paginas#index.xhtml"
+  PATH="/paginas/index.xhtml" SHAPE="240,145,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#paginas#usuarios#cadastrarUsuario.jsf"
+  PATH="/paginas/usuarios/cadastrarUsuario.jsf" SHAPE="240,257,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:*:7" PATH="*" SHAPE="32,801,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:7" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="resetarSenha::#paginas#usuarios#resetar_senha.jsf" NAME="output"
+    PATH="/paginas/usuarios/resetar_senha.jsf"
+    TARGET="rules:#paginas#usuarios#resetar_senha.jsf"
+    TITLE="resetarSenha" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#paginas#usuarios#login.jsf"
+  PATH="/paginas/usuarios/login.jsf" SHAPE="240,817,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:*:8" PATH="*" SHAPE="32,913,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:8" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="alterarMinhaConta::#paginas#usuarios#alterar_minha_conta.jsf"
+    NAME="output" PATH="/paginas/usuarios/alterar_minha_conta.jsf"
+    TARGET="rules:#paginas#usuarios#alterar_minha_conta.jsf"
+    TITLE="alterarMinhaConta" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#paginas#usuarios#usuarios.jsf"
+  PATH="/paginas/usuarios/usuarios.jsf" SHAPE="240,3169,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#paginas#logs#log-geral.jsf"
+  PATH="/paginas/logs/log-geral.jsf" SHAPE="240,1041,0,0" model-entity="JSFProcessGroup"/>
+</PROCESS>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<ui:composition   
+		xmlns="http://www.w3c.org/1999/xhtml"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:p="http://primefaces.org/ui"  
+		xmlns:f="http://java.sun.com/jsf/core"
+		template="/paginas/templates/principal.xhtml">
+		
+		<ui:define name="conteudo">
+		<div class="row-fluid">
+			<div class="span12">
+				<div class="row-fluid">
+				
+	 				<h:form id="formVeiculo" prependId="false">
+		 				<ui:repeat var="anuncio" value="#{homeBean.anuncios}">
+							<div class="span2 thumbnail thumbcars">
+								<h:commandLink action="#{homeBean.detalharCarro(anuncio)}">
+									<p:graphicImage value="/pics/#{anuncio.urlImagemPrincipal}" width="135px" height="300px" styleClass="thumbnail" rendered="#{not empty anuncio.urlImagemPrincipal}"/>
+								</h:commandLink>	
+								<h:panelGroup rendered="#{empty anuncio.urlImagemPrincipal}">
+									<img data-src="holder.js/260x180"></img>								
+								</h:panelGroup>
+								<div class="caption">
+									<h4>#{anuncio.veiculo.modelo.marca.nome}</h4>
+									<h6>#{anuncio.veiculo.modelo.nome}</h6>
+									<p><h:outputText value="#{anuncio.preco}"/></p>
+									<p><h:outputText value="#{anuncio.veiculo.anoVersao} - #{anuncio.quilometragem}"/></p>
+									<p><h:outputText value="#{anuncio.cidade}" /></p>
+    		                     	<p><h:outputText value="Tel: #{anuncio.telefone1}" /></p> 
+								</div>
+								<p:spacer width="10px"></p:spacer>
+							</div>
+							
+		 				</ui:repeat>
+					</h:form>
+					
+				</div>
+				
+			</div>
+		</div>
+		</ui:define>	
+</ui:composition>

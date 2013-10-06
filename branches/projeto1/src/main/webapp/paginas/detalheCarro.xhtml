@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE HTML>
+<ui:composition xmlns="http://www.w3c.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="/templates/principal.xhtml">
+	<ui:define name="conteudo">
+		<h:form>
+			<div class="row">
+				<div class="span3 offset1">
+					<p:galleria value="#{homeBean.anuncio.imagens}" var="image" panelWidth="400"
+						panelHeight="250" showCaption="false">
+						#{image.urlimagem}
+						<p:graphicImage value="/pics/#{image.urlimagem}" />
+					</p:galleria>
+				</div>
+				<div class="span5 offset1">
+					<p:tabView id="tabView">
+						<p:tab id="tab1" title="Detalhes">
+								<!--<p:graphicImage id="tab1Img"
+									value="/images/godfather/godfather1.jpg" />-->
+								<p:panelGrid>
+									<!-- <f:facet name="header">
+										<p:row>
+											<p:column rowspan="8" colspan="20">Detalhes</p:column>
+										</p:row>
+									</f:facet> -->
+									<p:row>
+										<p:column colspan="4">Ano: 2009/2010</p:column>
+										<p:column colspan="4">Tipo: usado</p:column>
+									</p:row>
+									<p:row>
+										<p:column colspan="4">Portas: 4</p:column>
+										<p:column colspan="4">Final placa: -</p:column>
+									</p:row>
+									<p:row>
+										<p:column colspan="4">Motor: 1.4</p:column>
+										<p:column colspan="4">Km: 44000</p:column>
+									</p:row>
+									<p:row>
+										<p:column colspan="4">Cor: Prata</p:column>
+										<p:column colspan="4">Tipo pintura: Metalico</p:column>
+									</p:row>
+									<p:row>
+										<p:column colspan="4">Combustivel: Flex</p:column>
+										<p:column colspan="4">Transmissao: Manual</p:column>
+									</p:row>
+									<p:row>
+										<p:column style="text-align:center" colspan="20">Preco: 25.000,00</p:column>
+									</p:row>
+								</p:panelGrid>
+						</p:tab>
+
+						<p:tab id="tab2" title="Enviar Proposta">
+							<h:panelGrid columns="2" cellpadding="10">
+								
+							</h:panelGrid>
+						</p:tab>
+
+						<!-- <p:tab id="tab3" title="Godfather Part III">
+							<h:panelGrid columns="2" cellpadding="10">
+								<p:graphicImage id="tab3Img"
+									value="/images/godfather/godfather3.jpg" />
+								<h:outputText id="tab3Text"
+									value="After a break of more than 15 years, director Francis Ford Coppola and writer Mario Puzo returned to the well for this third and final story of the fictional Corleone crime family.  
+                Two decades have passed, and crime kingpin Michael Corleone, now divorced from his wife Kay has nearly succeeded in keeping his promise that his family would one day be completely legitimate." />
+							</h:panelGrid>
+						</p:tab> -->
+
+					</p:tabView>
+
+				</div>
+			</div>
+		</h:form>
+	</ui:define>
+</ui:composition>
