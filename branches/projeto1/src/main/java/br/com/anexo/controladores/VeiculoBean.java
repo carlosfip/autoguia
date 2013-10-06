@@ -1,4 +1,4 @@
-/*package br.com.anexo.controladores;
+package br.com.anexo.controladores;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.SessionScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -20,53 +20,64 @@ import lombok.Setter;
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.DualListModel;
 import org.primefaces.model.UploadedFile;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Controller;
 
+import br.com.anexo.dao.especificos.AnoVersaoDAO;
+import br.com.anexo.dao.especificos.IAnoVersaoDAO;
+import br.com.anexo.dao.especificos.IAnuncioDAO;
+import br.com.anexo.dao.especificos.ICidadeDAO;
+import br.com.anexo.dao.especificos.IEstadoDAO;
+import br.com.anexo.dao.especificos.IImagemDAO;
+import br.com.anexo.dao.especificos.IMarcaDAO;
+import br.com.anexo.dao.especificos.IModeloDAO;
+import br.com.anexo.dao.especificos.IVeiculoDAO;
+import br.com.anexo.dao.especificos.IVersaoDAO;
+import br.com.anexo.entidades.AnoVersao;
+import br.com.anexo.entidades.Anuncio;
+import br.com.anexo.entidades.Cidade;
+import br.com.anexo.entidades.Estado;
+import br.com.anexo.entidades.Imagem;
+import br.com.anexo.entidades.Marca;
+import br.com.anexo.entidades.Modelo;
+import br.com.anexo.entidades.Usuario;
+import br.com.anexo.entidades.Veiculo;
+import br.com.anexo.entidades.Versao;
 import br.com.anexo.util.FacesUtil;
-import br.com.pb.dao.DAO;
-import br.com.pb.entidades.AnoVersao;
-import br.com.pb.entidades.Anuncio;
-import br.com.pb.entidades.Cidade;
-import br.com.pb.entidades.Estado;
-import br.com.pb.entidades.Imagem;
-import br.com.pb.entidades.Marca;
-import br.com.pb.entidades.Modelo;
-import br.com.pb.entidades.Usuario;
-import br.com.pb.entidades.Veiculo;
-import br.com.pb.entidades.Versao;
 
-@Named
-@SessionScoped
+@Controller
+@Scope("session")
 public class VeiculoBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@Inject
-	private DAO<Veiculo> veiculoDAO;
+	@Autowired
+	private IVeiculoDAO veiculoDAO;
 
-	@Inject
-	private DAO<Anuncio> anuncioDAO;
+	@Autowired
+	private IAnuncioDAO anuncioDAO;
 
-	@Inject
-	private DAO<Marca> marcaDAO;
+	@Autowired
+	private IMarcaDAO marcaDAO;
 
-	@Inject
-	private DAO<Modelo> modeloDAO;
+	@Autowired
+	private IModeloDAO modeloDAO;
 
-	@Inject
-	private DAO<AnoVersao> anoVersaoDAO;
+	@Autowired
+	private IAnoVersaoDAO anoVersaoDAO;
 
-	@Inject
-	private DAO<Versao> versaoDAO;
+	@Autowired
+	private IVersaoDAO versaoDAO;
 	
-	@Inject
-	private DAO<Imagem> imagemDAO;
+	@Autowired
+	private IImagemDAO imagemDAO;
 	
-	@Inject
-	private DAO<Estado> estadoDAO;
-	
+	@Autowired
+	private IEstadoDAO estadoDAO;
 
-	@Inject
-	private DAO<Cidade> cidadeDAO;
+	@Autowired
+	private ICidadeDAO cidadeDAO;
 
 	@Getter
 	@Setter
@@ -339,4 +350,4 @@ public class VeiculoBean implements Serializable {
 		
 		novoVeiculo();
 	}
-}*/
+}
