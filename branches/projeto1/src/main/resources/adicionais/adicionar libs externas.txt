@@ -1,0 +1,1 @@
+mvn install:install-file -Dfile=c:\alfred-0.0.3.jar -DgroupId=br.com.twsoftware -DartifactId=alfred -Dversion=0.0.3.0 -Dpackaging=jar
