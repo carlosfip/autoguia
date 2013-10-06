@@ -1,5 +1,5 @@
 
-package br.com.anexo.controladores;
+package br.com.anexo.util;
 
 import java.io.Serializable;
 import java.util.Observable;

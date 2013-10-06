@@ -15,12 +15,12 @@
 					<div class="nav-collapse collapse">
                     	<ul class="nav">
                       		<li>
-                      			<h:commandLink action="#{homeBean.listarAnuncios}">
+                      			<h:commandLink action="#{homeControlador.listarAnuncios}">
 									<h:outputText value="Inicio" />
 					      		</h:commandLink>
 					      	</li>
                       		<li>
-                      			<h:commandLink action="#{veiculoBean.cadastrarVeiculo}">
+                      			<h:commandLink action="#{anuncioControlador.cadastrarVeiculo}">
 									<h:outputText value="Anunciar" />
 					      		</h:commandLink>
 					  		</li>
@@ -39,7 +39,7 @@
                     	</ul>
 						<ul class="nav pull-right">
 							<li>
-								<p:commandLink action="#{homeBean.indexarLucene()}">
+								<p:commandLink action="#{homeControlador.indexarLucene()}">
 									<i class="icon-cogs"></i>
 									<p:spacer width="5px;" />
 									<h:outputText value="Reindexar Lucene" />													
@@ -53,7 +53,7 @@
 	                    </ul> 
 					</div><!-- /.nav-collapse -->
 					  <div class="navbar-search">
-                      	<p:autoComplete id="buscar" minQueryLength="3" styleClass="span4" maxResults="8" scrollHeight="470" var="v" value="#{homeBean.campoPesquisa}" effect="fade" completeMethod="#{homeBean.complete}">
+                      	<p:autoComplete id="buscar" minQueryLength="3" styleClass="span4" maxResults="8" scrollHeight="470" var="v" value="#{homeControlador.campoPesquisa}" effect="fade" completeMethod="#{homeControlador.complete}">
 							<p:column style="border:none">  
 								<p:graphicImage styleClass="img-rounded" value="/pics/#{v.urlImagemPrincipal}" width="75" height="75"/>  
 							</p:column>

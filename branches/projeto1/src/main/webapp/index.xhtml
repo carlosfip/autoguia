@@ -13,9 +13,9 @@
 				<div class="row-fluid">
 				
 	 				<h:form id="formVeiculo" prependId="false">
-		 				<ui:repeat var="anuncio" value="#{homeBean.anuncios}">
+		 				<ui:repeat var="anuncio" value="#{homeControlador.anuncios}">
 							<div class="span2 thumbnail thumbcars">
-								<h:commandLink action="#{homeBean.detalharCarro(anuncio)}">
+								<h:commandLink action="#{homeControlador.detalharCarro(anuncio)}">
 									<p:graphicImage value="/pics/#{anuncio.urlImagemPrincipal}" width="135px" height="300px" styleClass="thumbnail" rendered="#{not empty anuncio.urlImagemPrincipal}"/>
 								</h:commandLink>	
 								<h:panelGroup rendered="#{empty anuncio.urlImagemPrincipal}">

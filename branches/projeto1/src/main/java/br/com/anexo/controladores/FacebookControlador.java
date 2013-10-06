@@ -5,16 +5,16 @@ package br.com.anexo.controladores;
 
 import java.io.Serializable;
 
-import javax.faces.bean.SessionScoped;
-import javax.inject.Named;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Controller;
 
 /*//**
  * 
  * @author Felipe
  **/
-@Named
-@SessionScoped
-public class FacebookBean implements Serializable {
+@Controller
+@Scope("session")
+public class FacebookControlador implements Serializable {
 
      private static final long serialVersionUID = 1L;
 

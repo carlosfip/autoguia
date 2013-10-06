@@ -1,25 +1,11 @@
+package br.com.anexo.controladores;
+
 /*package br.com.anexo.controladores;
 
-import java.io.IOException;
-import java.io.Serializable;
 
-import javax.annotation.PostConstruct;
-import javax.enterprise.context.SessionScoped;
-import javax.faces.context.FacesContext;
-import javax.inject.Inject;
-import javax.inject.Named;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
-import lombok.Getter;
-import lombok.Setter;
-import br.com.pb.dao.DAO;
-import br.com.pb.entidades.Usuario;
-import br.com.twsoftware.alfred.object.Objeto;
-
-@Named
-@SessionScoped
-public class UsuarioBean implements Serializable {
+@Controller
+@Scope("session")
+public class UsuarioControlador implements Serializable {
 
      private static final long serialVersionUID = 1L;
 
