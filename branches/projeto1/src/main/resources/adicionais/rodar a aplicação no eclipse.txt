@@ -1,0 +1,12 @@
+Para rodar a aplicação no eclipse:
+  * Instale o Maven;
+  * Configure as variáveis de ambiente;
+    > JAVA_HOME
+  	> M2_HOME com a url do maven
+  	e elas no path: %JAVA_HOME%\bin;%M2_HOME%\bin.
+Clique no projeto com o botao direito Run As -> Run Configuration
+E escolhas as configurações:
+
+Base Dir=diretorio do projeto
+Goal=clean tomcat7:run
+Maven Runtime = External (Caso não esteja configurado External clique e config e adicione o caminho do maven).
