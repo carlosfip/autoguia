@@ -11,7 +11,7 @@
 		<h:form>
 			<div class="row">
 				<div class="span3 offset1">
-					<p:galleria value="#{homeBean.anuncio.imagens}" var="image" panelWidth="400"
+					<p:galleria value="#{homeControlador.anuncio.imagens}" var="image" panelWidth="400"
 						panelHeight="250" showCaption="false">
 						#{image.urlimagem}
 						<p:graphicImage value="/pics/#{image.urlimagem}" />

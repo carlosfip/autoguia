@@ -23,20 +23,20 @@
 										<h:outputLabel value="#{msg['veiculo.marca']}" for="marca">
 											<h:outputText value="  *" style="color:red"/>
 										</h:outputLabel>
-										<p:selectOneMenu value="#{veiculoBean.marca.id}" id="marca"  style="width:100%">
+										<p:selectOneMenu value="#{anuncioControlador.marca.id}" id="marca"  style="width:100%">
 											<f:selectItem itemLabel="Selecione" itemValue="" />
-											<f:selectItems value="#{veiculoBean.marcas}"  var="marca" itemLabel="#{marca.nome}" itemValue="#{marca.id}" />
-											<p:ajax update="modelo,anoVersao,versao" listener="#{veiculoBean.buscarModelos}" />
+											<f:selectItems value="#{anuncioControlador.marcas}"  var="marca" itemLabel="#{marca.nome}" itemValue="#{marca.id}" />
+											<p:ajax update="modelo,anoVersao,versao" listener="#{anuncioControlador.buscarModelos}" />
 										</p:selectOneMenu>
 									</div>
 									<div class="span3">
 										<h:outputLabel value="#{msg['veiculo.modelo']}" for="modelo"  style="width:100%">
 											<h:outputText value="  *" style="color:red"/>
 										</h:outputLabel>
-										<p:selectOneMenu value="#{veiculoBean.veiculo.modelo.id}" id="modelo" style="width:100%">
+										<p:selectOneMenu value="#{anuncioControlador.veiculo.modelo.id}" id="modelo" style="width:100%">
 											<f:selectItem itemLabel="Selecione" itemValue="" />
-											<f:selectItems value="#{veiculoBean.modelos}" var="modelo" itemLabel="#{modelo.nome}" itemValue="#{modelo.id}"/>
-											<p:ajax update="versao" listener="#{veiculoBean.buscarVersoes}" />
+											<f:selectItems value="#{anuncioControlador.modelos}" var="modelo" itemLabel="#{modelo.nome}" itemValue="#{modelo.id}"/>
+											<p:ajax update="versao" listener="#{anuncioControlador.buscarVersoes}" />
 										</p:selectOneMenu>
 									</div>
 								
@@ -44,10 +44,10 @@
 										<h:outputLabel value="#{msg['veiculo.versao']}" for="versao">
 											<h:outputText value="  *" style="color:red"/>
 										</h:outputLabel>
-										<p:selectOneMenu value="#{veiculoBean.versao.id}" id="versao" style="width:100%">
+										<p:selectOneMenu value="#{anuncioControlador.versao.id}" id="versao" style="width:100%">
 											 <f:selectItem itemLabel="Selecione" itemValue="" />
-											 <f:selectItems value="#{veiculoBean.versoes}"  var="versao" itemLabel="#{versao.nome}" itemValue="#{versao.id}"/>
-											 <p:ajax update="anoVersao,versao" listener="#{veiculoBean.buscarAnoVersao}" />
+											 <f:selectItems value="#{anuncioControlador.versoes}"  var="versao" itemLabel="#{versao.nome}" itemValue="#{versao.id}"/>
+											 <p:ajax update="anoVersao,versao" listener="#{anuncioControlador.buscarAnoVersao}" />
 										</p:selectOneMenu>
 									</div>
 								</div>
@@ -57,19 +57,19 @@
 										<h:outputLabel value="#{msg['veiculo.ano_versao']}" for="anoVersao">
 											<h:outputText value="  *" style="color:red"/>
 										</h:outputLabel>
-										<p:selectOneMenu value="#{veiculoBean.anoVersao.id}" id="anoVersao" style="width:100%">
+										<p:selectOneMenu value="#{anuncioControlador.anoVersao.id}" id="anoVersao" style="width:100%">
 											 <f:selectItem itemLabel="Selecione" itemValue="" />
-											 <f:selectItems value="#{veiculoBean.anosVersao}"  var="anoVersao" itemLabel="#{anoVersao.ano}" itemValue="#{anoVersao.id}"/>
-											 <p:ajax update="anofabricacao" listener="#{veiculoBean.buscarAnoFabricacao}" /> 
+											 <f:selectItems value="#{anuncioControlador.anosVersao}"  var="anoVersao" itemLabel="#{anoVersao.ano}" itemValue="#{anoVersao.id}"/>
+											 <p:ajax update="anofabricacao" listener="#{anuncioControlador.buscarAnoFabricacao}" /> 
 										</p:selectOneMenu>
 									</div>
 									<div class="span3">
 										<h:outputLabel value="#{msg['veiculo.ano_fabricacao']}" for="anofabricacao">
 											<h:outputText value="  *" style="color:red"/>
 										</h:outputLabel>
-										<p:selectOneMenu value="#{veiculoBean.anoFabricacao}" id="anofabricacao" style="width:100%">
+										<p:selectOneMenu value="#{anuncioControlador.anoFabricacao}" id="anofabricacao" style="width:100%">
 											 <f:selectItem itemLabel="Selecione" itemValue="" />
-	    	    		 					 <f:selectItems value="#{veiculoBean.anosFabricacao}"/>
+	    	    		 					 <f:selectItems value="#{anuncioControlador.anosFabricacao}"/>
 											<f:selectItems/>
 										</p:selectOneMenu>
 								   </div>	
@@ -77,9 +77,9 @@
 								   <h:outputLabel value="#{msg['veiculo.ano_fabricacao']}" for="anofabricacao">
 									<h:outputText value="  *" style="color:red"/>
 								</h:outputLabel>
-								<p:selectOneMenu value="#{veiculoBean.anoFabricacao}" id="anofabricacao">
+								<p:selectOneMenu value="#{anuncioControlador.anoFabricacao}" id="anofabricacao">
 									 <f:selectItem itemLabel="Selecione" itemValue="" />
-									<f:selectItems value="#{veiculoBean.anosFabricacao}"/>
+									<f:selectItems value="#{anuncioControlador.anosFabricacao}"/>
 								</p:selectOneMenu> -->
 								   
 									
@@ -87,9 +87,9 @@
 										<h:outputLabel value="#{msg['veiculo.cor']}" for="cor">
 											<h:outputText value="  *" style="color:red"/>
 										</h:outputLabel>
-										<p:selectOneMenu value="#{veiculoBean.veiculo.cor}" id="cor" style="width:100%">
+										<p:selectOneMenu value="#{anuncioControlador.veiculo.cor}" id="cor" style="width:100%">
 											 <f:selectItem itemLabel="Selecione" itemValue="" />
-											<f:selectItems value="#{veiculoBean.cores}" itemValue="#{veiculoBean.veiculo.cor}"/>
+											<f:selectItems value="#{anuncioControlador.cores}" itemValue="#{anuncioControlador.veiculo.cor}"/>
 										</p:selectOneMenu>
 									</div>
 								</div>
@@ -98,27 +98,27 @@
 								<h:outputLabel value="#{msg['veiculo.placa']}" for="placa">
 									<h:outputText value="  *" style="color:red"/>
 								</h:outputLabel>
-								<p:inputText value="#{veiculoBean.placa}" id="placa" maxlength="7" styleClass="span3" style="width:100%"/>
+								<p:inputText value="#{anuncioControlador.placa}" id="placa" maxlength="7" styleClass="span3" style="width:100%"/>
 							</div>
 						
 							<div class="span3">
 								<h:outputLabel value="#{msg['veiculo.quilometragem']}" for="quilometragem">
 									<h:outputText value="  *" style="color:red"/>
 								</h:outputLabel>
-								<p:inputText value="#{veiculoBean.anuncio.quilometragem}" id="quilometragem" styleClass="span3" style="width:100%"/>
+								<p:inputText value="#{anuncioControlador.anuncio.quilometragem}" id="quilometragem" styleClass="span3" style="width:100%"/>
 							</div>
 							<div class="span2">
 								<h:outputLabel value="#{msg['veiculo.gas']}" for="gas">
 									<h:outputText value=" " style="color:red"/>
 								</h:outputLabel>
-								<p:selectBooleanCheckbox value="#{veiculoBean.gas}" id="gas" styleClass="span2"/>
+								<p:selectBooleanCheckbox value="#{anuncioControlador.gas}" id="gas" styleClass="span2"/>
 							</div>
 						<div class="row">
 							<div class="span2">
 								<h:outputLabel value="#{msg['veiculo.unico_dono']}" for="unicodono">
 									<h:outputText value=" " style="color:red"/>
 								</h:outputLabel>
-								<p:selectBooleanCheckbox value="#{veiculoBean.unicoDono}" id="unicodono" styleClass="span3" />
+								<p:selectBooleanCheckbox value="#{anuncioControlador.unicoDono}" id="unicodono" styleClass="span3" />
 							</div>
 						</div>
 						</div>
@@ -128,7 +128,7 @@
 								<fieldset>
 									<!-- <legend>#{msg['veiculo.acessorios']}</legend> -->
 									<legend>Acessorios/Opcionais</legend>
-									<p:pickList id="acessorios" value="#{veiculoBean.acessorios}" var="acessorio" itemLabel="#{acessorio}" itemValue="#{acessorio}" />
+									<p:pickList id="acessorios" value="#{anuncioControlador.acessorios}" var="acessorio" itemLabel="#{acessorio}" itemValue="#{acessorio}" />
 								</fieldset> 
 							</div>
 						</div>
@@ -137,7 +137,7 @@
 								<fieldset>
 									<!-- <legend>#{msg['veiculo.acessorios']}</legend> -->
 									<legend>Imagens</legend>
-									<p:pickList id="acessorios2" value="#{veiculoBean.acessorios}" var="acessorio" itemLabel="#{acessorio}" itemValue="#{acessorio}" />
+									<p:pickList id="acessorios2" value="#{anuncioControlador.acessorios}" var="acessorio" itemLabel="#{acessorio}" itemValue="#{acessorio}" />
 								</fieldset> 
 							</div>
 						</div>
@@ -149,20 +149,20 @@
 									<h:outputLabel value="#{msg['veiculo.uf']}" for="uf">
 											<h:outputText value="  *" style="color:red"/>
 									</h:outputLabel>
-									<p:selectOneMenu value="#{veiculoBean.estado.id}" id="uf" style="width: 100%" panelStyle="span2">
+									<p:selectOneMenu value="#{anuncioControlador.estado.id}" id="uf" style="width: 100%" panelStyle="span2">
 											<f:selectItem itemLabel="PB" itemValue="25" />
 											<f:selectItem itemLabel="PE" itemValue="26"/>
-											<f:selectItems value="#{veiculoBean.estados}"  var="estado" itemLabel="#{estado.sigla}" itemValue="#{estado.id}" />
-											<p:ajax update="cidade" listener="#{veiculoBean.buscarCidades}" />
+											<f:selectItems value="#{anuncioControlador.estados}"  var="estado" itemLabel="#{estado.sigla}" itemValue="#{estado.id}" />
+											<p:ajax update="cidade" listener="#{anuncioControlador.buscarCidades}" />
 									</p:selectOneMenu>
 								</div>
 								<div class="span3">
 									<h:outputLabel value="#{msg['veiculo.cidade']}" for="cidade">
 											<h:outputText value="  *" style="color:red"/>
 									</h:outputLabel>
-									<p:selectOneMenu value="#{veiculoBean.cidade.id}" id="cidade" style="width: 100%;" panelStyle="span4">
-										<f:selectItem itemLabel="#{veiculoBean.estado.capital}"></f:selectItem>
-										<f:selectItems value="#{veiculoBean.cidades}" var="cidade" itemLabel="#{cidade.nome}" itemValue="#{cidade.id}"/>
+									<p:selectOneMenu value="#{anuncioControlador.cidade.id}" id="cidade" style="width: 100%;" panelStyle="span4">
+										<f:selectItem itemLabel="#{anuncioControlador.estado.capital}"></f:selectItem>
+										<f:selectItems value="#{anuncioControlador.cidades}" var="cidade" itemLabel="#{cidade.nome}" itemValue="#{cidade.id}"/>
 									</p:selectOneMenu>
 								</div>
 							</div>
@@ -171,13 +171,13 @@
 									<h:outputLabel value="#{msg['veiculo.telefone1']}" for="telefone1" >
 										<h:outputText value="  *" style="color:red"/>
 									</h:outputLabel>
-									<p:inputText value="#{veiculoBean.anuncio.telefone1}" id="telefone1" styleClass="span4" style="width:100%"/>
+									<p:inputText value="#{anuncioControlador.anuncio.telefone1}" id="telefone1" styleClass="span4" style="width:100%"/>
 								</div>
 								<div class="span4">
 									<h:outputLabel value="#{msg['veiculo.telefone2']}" for="telefone2">
 										<h:outputText value="  *" style="color:red"/>
 									</h:outputLabel>
-									<p:inputText value="#{veiculoBean.anuncio.telefone2}" id="telefone2" styleClass="span4" style="width:100%"/>
+									<p:inputText value="#{anuncioControlador.anuncio.telefone2}" id="telefone2" styleClass="span4" style="width:100%"/>
 								</div>
 							</div>
 						</fieldset>
@@ -188,7 +188,7 @@
 									<h:outputLabel value="#{msg['veiculo.preco']}" for="preco">
 										<h:outputText value="  *" style="color:red"/>
 									</h:outputLabel>
-									<p:inputText value="#{veiculoBean.anuncio.preco}" id="preco"  styleClass="span2" style="width:100%"/>
+									<p:inputText value="#{anuncioControlador.anuncio.preco}" id="preco"  styleClass="span2" style="width:100%"/>
 								</div>
 						</div>
 						<br />
@@ -198,7 +198,7 @@
 								<h:outputLabel value="#{msg['veiculo.informacoes_adicionais']}" for="informacoes_adicionais">
 									<h:outputText value="  *" style="color:red"/>
 								</h:outputLabel>
-								<p:inputTextarea id="informacoes_adicionais" rows="5" cols="30" value="#{veiculoBean.anuncio.descricao}" counter="counter" maxlength="100" counterTemplate="#{msg['veiculo.caracteres_restantes']}" autoResize="false"/>  
+								<p:inputTextarea id="informacoes_adicionais" rows="5" cols="30" value="#{anuncioControlador.anuncio.descricao}" counter="counter" maxlength="100" counterTemplate="#{msg['veiculo.caracteres_restantes']}" autoResize="false"/>  
 								<h:outputText id="counter" />
 							</div>
 						</div>
@@ -207,14 +207,14 @@
 							
 						<div class="row">
 							<div class="span12">
-								<p:commandButton value="Cadastrar" action="#{veiculoBean.cadastrar}"/>
+								<p:commandButton value="Cadastrar" action="#{anuncioControlador.cadastrar}"/>
 								<p:commandButton value="Cancelar"/>
 							</div>
 						</div>
 						<p:dialog id="modalDialog" header="Importar Imagens" widgetVar="dialogUpload" modal="true" height= "564" width= "700">  
 	  						<h:form>  
 	  
-							    <p:fileUpload fileUploadListener="#{veiculoBean.upload}" mode="advanced" dragDropSupport="false"  
+							    <p:fileUpload fileUploadListener="#{anuncioControlador.upload}" mode="advanced" dragDropSupport="false"  
 							                  update="messages" sizeLimit="1000000" fileLimit="3" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" 
 							                  cancelLabel="Cancelar" label="Escolher" uploadLabel="Importar"/>  
 							  

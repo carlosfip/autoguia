@@ -9,10 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import javax.inject.Inject;
-import javax.inject.Named;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -24,7 +21,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import br.com.anexo.dao.especificos.AnoVersaoDAO;
 import br.com.anexo.dao.especificos.IAnoVersaoDAO;
 import br.com.anexo.dao.especificos.IAnuncioDAO;
 import br.com.anexo.dao.especificos.ICidadeDAO;
@@ -48,7 +44,7 @@ import br.com.anexo.util.FacesUtil;
 
 @Controller
 @Scope("session")
-public class VeiculoBean implements Serializable {
+public class AnuncioControlador implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 

@@ -24,7 +24,7 @@ import br.com.anexo.util.LuceneUtil;
 
 @Controller
 @Scope("session")
-public class HomeBean implements Serializable{
+public class HomeControlador implements Serializable{
 	/**
 	 * 
 	 */
