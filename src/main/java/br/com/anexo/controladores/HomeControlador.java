@@ -16,8 +16,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import br.com.anexo.dao.especificos.AnuncioDAO;
-import br.com.anexo.dao.especificos.IAnuncioDAO;
+import br.com.anexo.dao.interfaces.AnuncioDAO;
+import br.com.anexo.dao.jpa.implementadores.JPAAnuncioDAO;
 import br.com.anexo.entidades.Anuncio;
 import br.com.anexo.entidades.Imagem;
 import br.com.anexo.util.LuceneUtil;
@@ -31,7 +31,7 @@ public class HomeControlador implements Serializable{
 	private static final long serialVersionUID = -7548184722900030835L;
 	
 	@Autowired
-	private IAnuncioDAO anuncioDAO;
+	private AnuncioDAO anuncioDAO;
 	
 	@Getter
 	@Setter
