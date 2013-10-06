@@ -21,15 +21,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import br.com.anexo.dao.especificos.IAnoVersaoDAO;
-import br.com.anexo.dao.especificos.IAnuncioDAO;
-import br.com.anexo.dao.especificos.ICidadeDAO;
-import br.com.anexo.dao.especificos.IEstadoDAO;
-import br.com.anexo.dao.especificos.IImagemDAO;
-import br.com.anexo.dao.especificos.IMarcaDAO;
-import br.com.anexo.dao.especificos.IModeloDAO;
-import br.com.anexo.dao.especificos.IVeiculoDAO;
-import br.com.anexo.dao.especificos.IVersaoDAO;
+import br.com.anexo.dao.interfaces.AnoVersaoDAO;
+import br.com.anexo.dao.interfaces.AnuncioDAO;
+import br.com.anexo.dao.interfaces.CidadeDAO;
+import br.com.anexo.dao.interfaces.EstadoDAO;
+import br.com.anexo.dao.interfaces.ImagemDAO;
+import br.com.anexo.dao.interfaces.MarcaDAO;
+import br.com.anexo.dao.interfaces.ModeloDAO;
+import br.com.anexo.dao.interfaces.VersaoDAO;
 import br.com.anexo.entidades.AnoVersao;
 import br.com.anexo.entidades.Anuncio;
 import br.com.anexo.entidades.Cidade;
@@ -49,31 +48,28 @@ public class AnuncioControlador implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Autowired
-	private IVeiculoDAO veiculoDAO;
+	private AnuncioDAO anuncioDAO;
 
 	@Autowired
-	private IAnuncioDAO anuncioDAO;
+	private MarcaDAO marcaDAO;
 
 	@Autowired
-	private IMarcaDAO marcaDAO;
+	private ModeloDAO modeloDAO;
 
 	@Autowired
-	private IModeloDAO modeloDAO;
+	private AnoVersaoDAO anoVersaoDAO;
 
 	@Autowired
-	private IAnoVersaoDAO anoVersaoDAO;
-
-	@Autowired
-	private IVersaoDAO versaoDAO;
+	private VersaoDAO versaoDAO;
 	
 	@Autowired
-	private IImagemDAO imagemDAO;
+	private ImagemDAO imagemDAO;
 	
 	@Autowired
-	private IEstadoDAO estadoDAO;
+	private EstadoDAO estadoDAO;
 
 	@Autowired
-	private ICidadeDAO cidadeDAO;
+	private CidadeDAO cidadeDAO;
 
 	@Getter
 	@Setter
@@ -161,11 +157,7 @@ public class AnuncioControlador implements Serializable {
 	private DualListModel<String> acessorios;
 
 	List<Imagem> imagens = null;
-//	public void handleFileUpload(FileUploadEvent event) {  
-//		System.out.println("okojoajoajaooajoa");
-//        FacesMessage msg = new FacesMessage("Succesful", event.getFile().getFileName() + " is uploaded.");  
-//        FacesContext.getCurrentInstance().addMessage(null, msg);  
-//    }  
+
 	public void upload(FileUploadEvent event) {  
 		UploadedFile file = event.getFile();
 		//File diretorio = new File(FacesContext.getCurrentInstance().getExternalContext().getRealPath("")+"/../imagens/");
@@ -200,8 +192,6 @@ public class AnuncioControlador implements Serializable {
 			e.printStackTrace();
 			return;
 		}
-		//FacesMessage msg = new FacesMessage("Succesful", event.getFile().getFileName() + " is uploaded.");  
-		//FacesContext.getCurrentInstance().addMessage(null, msg);
 		FacesUtil.adicionarSucesso("Arquivo(s) carregados com sucesso!");
 	}  
 
@@ -240,26 +230,26 @@ public class AnuncioControlador implements Serializable {
 		veiculo.setModelo(new Modelo());
 		anoVersao = new AnoVersao();
 		anosVersao.removeAll(anosVersao);
-		modelos = modeloDAO.listar("select m from Modelo m join m.marca m1 where m1.id = " + marca.getId() + " order by m.nome asc");
+		modelos = modeloDAO.listarByMarca(marca.getId());
 	}
 
 	public void buscarVersoes(){
 		versao = new Versao();
 		anoVersao = new AnoVersao();
 		anosVersao.removeAll(anosVersao);
-		versoes = versaoDAO.select("select * from t_versao where idmodelo = \'" + veiculo.getModelo().getId() + "\' order by nome asc");
+		versoes = versaoDAO.listarPorModelo(veiculo.getModelo().getId());
 	}
 
 	public void buscarAnoModelos() {
 		anoVersao = new AnoVersao();
 		anosVersao.removeAll(anosVersao);
 		String idModeloTratado = veiculo.getModelo().getId().toString().replace("-", "%");
-		anosVersao = anoVersaoDAO.select("select * from t_anoversao where idversao like \'" + idModeloTratado + "\' order by nome asc");
+		anosVersao = anoVersaoDAO.listarPorModelo(idModeloTratado);
 	}
 	public void buscarCidades(){
 		estado = estadoDAO.obter(getEstado().getId());
 		cidade = new Cidade();
-		cidades = cidadeDAO.listar("select c from Cidade c join c.estado e where e.id = " + estado.getId() + " order by c.nome asc");
+		cidades = cidadeDAO.listarPorEstado(estado.getId());
 	}
 	
 	public void buscarAnoFabricacao() {
@@ -274,7 +264,7 @@ public class AnuncioControlador implements Serializable {
 
 	public void buscarAnoVersao() {
 		anosVersao.removeAll(anosVersao);
-		anosVersao = anoVersaoDAO.listar("select av from AnoVersao av join av.versao v where v.id = " + versao.getId());
+		anosVersao = anoVersaoDAO.listarPorVersao(versao.getId());
 	}
 
 	private void novoVeiculo() {
@@ -333,14 +323,11 @@ public class AnuncioControlador implements Serializable {
 			anuncio.setCidade(cidade.getNome());
 			anuncio.setEstado(estado.getSigla());
 			
-			veiculoDAO.adiciona(veiculo);
-			anuncioDAO.adiciona(anuncio);
+			anuncioDAO.cadastrar(anuncio);
 			
-			for(Imagem imagem:anuncio.getImagens()){
-				imagemDAO.adiciona(imagem);
-			}
 			FacesUtil.adicionarSucesso("Sucesso");
 		} catch (Exception e) {
+			e.printStackTrace();
 			FacesUtil.adicionarErro("Bug");
 		}
 		
