@@ -35,6 +35,12 @@
 		</dependency>
 		
 		<dependency>
+			<groupId>br.com.anexo</groupId>
+			<artifactId>qrCode</artifactId>
+			<version>0.0.1.0</version>
+		</dependency>
+		
+		<dependency>
 		    <groupId>commons-collections</groupId>
 		    <artifactId>commons-collections</artifactId>
 		    <version>3.2</version>
