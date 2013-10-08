@@ -1,3 +1,4 @@
+package br.com.anexo.qrcode;
 /*package br.com.anexo.qrcode;
 
 import java.io.File;  

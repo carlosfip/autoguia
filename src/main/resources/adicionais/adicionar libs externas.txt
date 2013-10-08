@@ -1,1 +1,2 @@
 mvn install:install-file -Dfile=c:\alfred-0.0.3.jar -DgroupId=br.com.twsoftware -DartifactId=alfred -Dversion=0.0.3.0 -Dpackaging=jar
+mvn install:install-file -Dfile=c:\anexo-qrcode-0.0.1.jar -DgroupId=br.com.anexo -DartifactId=qrCode -Dversion=0.0.1.0 -Dpackaging=jar
