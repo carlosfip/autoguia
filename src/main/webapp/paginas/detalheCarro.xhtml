@@ -1,79 +1,154 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE HTML>
-<ui:composition xmlns="http://www.w3c.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui"
-	xmlns:f="http://java.sun.com/jsf/core"
-	template="/templates/principal.xhtml">
+<ui:composition xmlns="http://www.w3c.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" 
+xmlns:ui="http://java.sun.com/jsf/facelets" 
+xmlns:p="http://primefaces.org/ui" 
+xmlns:f="http://java.sun.com/jsf/core" 
+template="/paginas/templates/principal.xhtml">
 	<ui:define name="conteudo">
 		<h:form>
-			<div class="row">
-				<div class="span3 offset1">
-					<p:galleria value="#{homeControlador.anuncio.imagens}" var="image" panelWidth="400"
-						panelHeight="250" showCaption="false">
-						#{image.urlimagem}
-						<p:graphicImage value="/pics/#{image.urlimagem}" />
-					</p:galleria>
-				</div>
-				<div class="span5 offset1">
-					<p:tabView id="tabView">
-						<p:tab id="tab1" title="Detalhes">
-								<!--<p:graphicImage id="tab1Img"
-									value="/images/godfather/godfather1.jpg" />-->
-								<p:panelGrid>
-									<!-- <f:facet name="header">
-										<p:row>
-											<p:column rowspan="8" colspan="20">Detalhes</p:column>
-										</p:row>
-									</f:facet> -->
-									<p:row>
-										<p:column colspan="4">Ano: 2009/2010</p:column>
-										<p:column colspan="4">Tipo: usado</p:column>
-									</p:row>
-									<p:row>
-										<p:column colspan="4">Portas: 4</p:column>
-										<p:column colspan="4">Final placa: -</p:column>
-									</p:row>
-									<p:row>
-										<p:column colspan="4">Motor: 1.4</p:column>
-										<p:column colspan="4">Km: 44000</p:column>
-									</p:row>
-									<p:row>
-										<p:column colspan="4">Cor: Prata</p:column>
-										<p:column colspan="4">Tipo pintura: Metalico</p:column>
-									</p:row>
-									<p:row>
-										<p:column colspan="4">Combustivel: Flex</p:column>
-										<p:column colspan="4">Transmissao: Manual</p:column>
-									</p:row>
-									<p:row>
-										<p:column style="text-align:center" colspan="20">Preco: 25.000,00</p:column>
-									</p:row>
-								</p:panelGrid>
-						</p:tab>
-
-						<p:tab id="tab2" title="Enviar Proposta">
-							<h:panelGrid columns="2" cellpadding="10">
-								
-							</h:panelGrid>
-						</p:tab>
-
-						<!-- <p:tab id="tab3" title="Godfather Part III">
-							<h:panelGrid columns="2" cellpadding="10">
-								<p:graphicImage id="tab3Img"
-									value="/images/godfather/godfather3.jpg" />
-								<h:outputText id="tab3Text"
-									value="After a break of more than 15 years, director Francis Ford Coppola and writer Mario Puzo returned to the well for this third and final story of the fictional Corleone crime family.  
-                Two decades have passed, and crime kingpin Michael Corleone, now divorced from his wife Kay has nearly succeeded in keeping his promise that his family would one day be completely legitimate." />
-							</h:panelGrid>
-						</p:tab> -->
-
-					</p:tabView>
-
+			<!-- Main Area -->
+			<!-- Slider -->
+			<div class="row-fluid">
+				<div class="span12" id="slider">
+					<!-- Top part of the slider -->
+					<div class="row">
+						<div class="span8" id="carousel-bounding-box">
+							<div id="myCarousel" class="carousel slide">
+								<!-- Carousel items -->
+								<div class="carousel-inner">
+									<div class="active item" data-slide-number="0">
+										<img src="../pics/thumbnails/1.gif" />
+									</div>
+									<div class="item" data-slide-number="1">
+										<img src="../pics/thumbnails/2.gif" />
+									</div>
+									<div class="item" data-slide-number="2">
+										<img src="../pics/thumbnails/3.gif" />
+									</div>
+									<div class="item" data-slide-number="3">
+										<img src="../pics/thumbnails/4.gif" />
+									</div>
+									<div class="item" data-slide-number="4">
+										<img src="../pics/thumbnails/5.gif" />
+									</div>
+									<div class="item" data-slide-number="5">
+										<img src="../pics/thumbnails/6.gif" />
+									</div>
+								</div>
+								<!-- Carousel nav -->
+								<a class="carousel-control left" href="#myCarousel" data-slide="prev">&#8249;</a>
+								<a class="carousel-control right" href="#myCarousel" data-slide="next">&#8250;</a>
+							</div>
+						</div>
+						<div class="span4" id="carousel-text"></div>
+						<div style="display: none;" id="slide-content">
+							<div id="slide-content-0">
+								<h2>Slider One</h2>
+								<p>Lorem Ipsum Dolor</p>
+								<p class="sub-text">
+									October 24 2012 - <a href="#">Read more</a>
+								</p>
+							</div>
+							<div id="slide-content-1">
+								<h2>Slider Two</h2>
+								<p>Lorem Ipsum Dolor</p>
+								<p class="sub-text">
+									October 24 2012 - <a href="#">Read more</a>
+								</p>
+							</div>
+							<div id="slide-content-2">
+								<h2>Slider Three</h2>
+								<p>Lorem Ipsum Dolor</p>
+								<p class="sub-text">
+									October 24 2012 - <a href="#">Read more</a>
+								</p>
+							</div>
+							<div id="slide-content-3">
+								<h2>Slider Four</h2>
+								<p>Lorem Ipsum Dolor</p>
+								<p class="sub-text">
+									October 24 2012 - <a href="#">Read more</a>
+								</p>
+							</div>
+							<div id="slide-content-4">
+								<h2>Slider Five</h2>
+								<p>Lorem Ipsum Dolor</p>
+								<p class="sub-text">
+									October 24 2012 - <a href="#">Read more</a>
+								</p>
+							</div>
+							<div id="slide-content-5">
+								<h2>Slider Six</h2>
+								<p>Lorem Ipsum Dolor</p>
+								<p class="sub-text">
+									October 24 2012 - <a href="#">Read more</a>
+								</p>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
+			<!--/Slider-->
+			
+			<div class="row hidden-phone" id="slider-thumbs">
+				<div class="span12">
+					<!-- Bottom switcher of slider -->
+					<ul class="thumbnails">
+						<li class="span2">
+							<a class="thumbnail" id="carousel-selector-0">
+								<img src="../pics/thumbnails/m1.gif" />
+							</a>
+						</li>
+						<li class="span2">
+							<a class="thumbnail" id="carousel-selector-1">
+								<img src="../pics/thumbnails/m2.gif" />
+							</a>
+						</li>
+						<li class="span2">
+							<a class="thumbnail" id="carousel-selector-2">
+								<img src="../pics/thumbnails/m3.gif" />
+							</a>
+						</li>
+						<li class="span2">
+							<a class="thumbnail" id="carousel-selector-3">
+								<img src="../pics/thumbnails/m4.gif" />
+							</a>
+						</li>
+						<li class="span2">
+							<a class="thumbnail" id="carousel-selector-4">
+								<img src="../pics/thumbnails/m5.gif" />
+							</a>
+						</li>
+						<li class="span2">
+							<a class="thumbnail" id="carousel-selector-5">
+								<img src="../pics/thumbnails/m6.gif" />
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<script>
+				$(document).ready(function($) {
+					$('#myCarousel').carousel({
+						interval: 5000
+					});
+					$('#carousel-text').html($('#slide-content-0').html());
+			        //Handles the carousel thumbnails
+			        $('[id^=carousel-selector-]').click( function(){
+		                var id_selector = $(this).attr("id");
+		                var id = id_selector.substr(id_selector.length -1);
+		                var id = parseInt(id);
+		                $('#myCarousel').carousel(id);
+			        });
+			        // When the carousel slides, auto update the text
+			        $('#myCarousel').on('slid', function (e) {
+		                var id = $('.item.active').data('slide-number');
+		                $('#carousel-text').html($('#slide-content-'+id).html());
+			        });
+				});
+			</script>
 		</h:form>
 	</ui:define>
 </ui:composition>

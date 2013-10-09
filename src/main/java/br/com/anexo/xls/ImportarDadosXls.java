@@ -1,6 +1,5 @@
-/*package br.com.anexo.xls;
+package br.com.anexo.xls;
 
-import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -16,10 +15,9 @@ import br.com.twsoftware.alfred.object.Objeto;
 
 public class ImportarDadosXls {
 
-	public List<AnuncioXls> importarDadosArquivo(String url) throws Exception {
+	public List<AnuncioXls> importarDadosArquivo(InputStream inp) throws Exception {
 		HSSFRow row = null;
 		HSSFCell cell = null;
-		InputStream inp = new FileInputStream(url);
 
 		HSSFWorkbook wb = new HSSFWorkbook(inp);
 		HSSFSheet sheet = wb.getSheetAt(0);
@@ -113,10 +111,10 @@ public class ImportarDadosXls {
 		}
 		return listaAnuncios;
 	}
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		ImportarDadosXls dados = new ImportarDadosXls();
 		try {
-			List<AnuncioXls> anunciosXls = dados.importarDadosArquivo("/Users/Beto/workspace/tudo-shopping/AutoGuia/WebContent/excel/autoguia.xls");
+			List<AnuncioXls> anunciosXls = dados.importarDadosArquivo("C:/Users/Beto/Desktop/autoguia.xls");
 			for (AnuncioXls anuncioXls : anunciosXls) {
 				System.out.println(anunciosXls);
 			}
@@ -124,5 +122,5 @@ public class ImportarDadosXls {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
-}*/
+	}*/
+}

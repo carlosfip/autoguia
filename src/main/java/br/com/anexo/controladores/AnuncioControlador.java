@@ -1,11 +1,13 @@
 package br.com.anexo.controladores;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -14,6 +16,11 @@ import javax.faces.context.FacesContext;
 import lombok.Getter;
 import lombok.Setter;
 
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.hssf.util.CellReference;
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.DualListModel;
 import org.primefaces.model.UploadedFile;
@@ -40,6 +47,8 @@ import br.com.anexo.entidades.Usuario;
 import br.com.anexo.entidades.Veiculo;
 import br.com.anexo.entidades.Versao;
 import br.com.anexo.util.FacesUtil;
+import br.com.anexo.xls.AnuncioXls;
+import br.com.anexo.xls.ImportarDadosXls;
 
 @Controller
 @Scope("session")
@@ -157,7 +166,23 @@ public class AnuncioControlador implements Serializable {
 	private DualListModel<String> acessorios;
 
 	List<Imagem> imagens = null;
-
+	
+	public void uploadExcel(FileUploadEvent event) {
+		UploadedFile file = event.getFile();
+        if (file.getSize() > 10000000) {
+        	FacesUtil.adicionarErro("Arquivo muito grande.");
+             return;
+        }
+        try {
+			InputStream stream = file.getInputstream();
+			ImportarDadosXls dados = new ImportarDadosXls();
+			List<AnuncioXls> anunciosXls = dados.importarDadosArquivo(stream);
+			System.out.println(anunciosXls);
+			FacesUtil.adicionarSucesso("Anuncios Realizados com Sucesso!");
+        }catch(Exception e){
+        	e.printStackTrace();
+        }
+	}
 	public void upload(FileUploadEvent event) {  
 		UploadedFile file = event.getFile();
 		//File diretorio = new File(FacesContext.getCurrentInstance().getExternalContext().getRealPath("")+"/../imagens/");
