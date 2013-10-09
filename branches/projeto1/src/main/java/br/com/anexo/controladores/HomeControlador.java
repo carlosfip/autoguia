@@ -17,7 +17,6 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import br.com.anexo.dao.interfaces.AnuncioDAO;
-import br.com.anexo.dao.jpa.implementadores.JPAAnuncioDAO;
 import br.com.anexo.entidades.Anuncio;
 import br.com.anexo.entidades.Imagem;
 import br.com.anexo.util.LuceneUtil;
@@ -83,16 +82,16 @@ public class HomeControlador implements Serializable{
 			for(Imagem imagem :v.getImagens()){
 				if (("S").equals(imagem.getIsimagemprincipal())){
 					try {
-						String path = FacesContext.getCurrentInstance().getExternalContext().getRealPath("")+"/../imagens/";
+						//String path = FacesContext.getCurrentInstance().getExternalContext().getRealPath("")+"/pics/";
 //						v.setUrlImagemPrincipal(
 //								TratamentoImagens.convertByteArrayInFile(
 //										TratamentoImagens.createThumbnail(path+imagem.getUrlimagem())
 //										, path+imagem.getUrlimagem(), path));
+						v.setUrlImagemPrincipal(/*FacesContext.getCurrentInstance().getExternalContext().getRealPath("")+"/pics/"+*/imagem.getUrlimagem());
 					} catch (Exception e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-					v.setUrlImagemPrincipal(FacesContext.getCurrentInstance().getExternalContext().getRealPath("")+"/../imagens/"+imagem.getUrlimagem());
 				}
 			}
 		}

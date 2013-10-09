@@ -1,6 +1,23 @@
 package br.com.anexo.controladores;
 
-/*package br.com.anexo.controladores;
+import java.io.IOException;
+import java.io.Serializable;
+
+import javax.annotation.PostConstruct;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import lombok.Getter;
+import lombok.Setter;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Controller;
+
+import br.com.anexo.dao.interfaces.UsuarioDAO;
+import br.com.anexo.entidades.Usuario;
+import br.com.twsoftware.alfred.object.Objeto;
 
 
 @Controller
@@ -9,8 +26,8 @@ public class UsuarioControlador implements Serializable {
 
      private static final long serialVersionUID = 1L;
 
-     @Inject
-     private DAO<Usuario> usuarioDAO;
+     @Autowired
+     private UsuarioDAO usuarioDAO;
 
      @Getter
      @Setter
@@ -31,7 +48,7 @@ public class UsuarioControlador implements Serializable {
           return "sucesso";
      }
      
-     public void loginFacebook() throws IOException{
+      public void loginFacebook() throws IOException{
           HttpServletRequest request = (HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest();
           HttpSession session = request.getSession();
           //Adicionar acima verificacao de passagem do token no request
@@ -42,8 +59,7 @@ public class UsuarioControlador implements Serializable {
           else {
                //TODO Adicionar tramento caso token nao tenha sido capturado.
           }
-          FacesContext.getCurrentInstance().getExternalContext().redirect("fblogin.jsf");
+          FacesContext.getCurrentInstance().getExternalContext().redirect("index.jsf");
      }
      
 }
-*/

@@ -24,6 +24,22 @@
 									<h:outputText value="Anunciar" />
 					      		</h:commandLink>
 					  		</li>
+					  		<li>
+                      			<p:commandLink onclick="dialogUpload.show()">
+									<h:outputText value="Anuncio Restrito" />
+									
+					      		</p:commandLink>
+					  		</li>
+					  		<p:dialog id="modalDialog" header="Importar Imagens" widgetVar="dialogUpload" modal="true" height= "564" width= "700">  
+		  						<h:form>  
+								    <p:fileUpload fileUploadListener="#{anuncioControlador.uploadExcel}" mode="advanced" dragDropSupport="false"  
+								                  update="messages" sizeLimit="1000000" fileLimit="3" allowTypes="/(\.|\/)(xls)$/" 
+								                  cancelLabel="Cancelar" label="Escolher" uploadLabel="Carregar Excel"/>  
+								  
+								    <p:growl id="messages" showDetail="true"/>  
+								  
+								</h:form>   
+							</p:dialog>
                       		<!-- <li class="dropdown">
                         		<a data-toggle="dropdown" class="dropdown-toggle" href="#">Dropdown <b class="caret"></b></a>
                         		<ul class="dropdown-menu">
@@ -45,11 +61,14 @@
 									<h:outputText value="Reindexar Lucene" />													
 								</p:commandLink>
 							</li>	
-							<li class="dropdown">
-								<a class="dropdown-toggle" href="#" data-toggle="dropdown">Login</a>
-								<div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;">
-								</div>
-							</li>
+							<!-- <li>
+								<h:inputHidden id="token" value="#{usuarioControlador.token}" />
+								<h:inputHidden id="nome" value="#{usuarioControlador.usuario.nome}" />
+								<h:inputHidden id="email" value="#{usuarioControlador.usuario.email}" />
+								<h:inputHidden id="datanascimento" value="#{usuarioControlador.usuario.datanascimento}" />
+								<p:commandLink id="asd" actionListener="#{usuarioControlador.loginFacebook}" style="display: none;"/>
+								<h:outputLink id="loginFacebook" onclick="login(); return false;">Log in</h:outputLink>
+							</li> -->
 	                    </ul> 
 					</div><!-- /.nav-collapse -->
 					  <div class="navbar-search">
