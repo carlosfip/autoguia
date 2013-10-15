@@ -10,8 +10,31 @@
 		<ui:define name="conteudo">
 		<div class="row-fluid">
 			<div class="span12">
+			   
+				<p:outputPanel>
+			    	<div style="z-index: 1;" class="ad-div yt-card mastad" id="ad_creative_1">
+						<script>(function() {var loaded = function() {return window.yt &amp;&amp; yt.www &amp;&amp; yt.www.home &amp;&amp; yt.www.home.ads;};window.masthead_ad_creative_iframe_1_workaround = function() {if (loaded()) {yt.www.home.ads.workaroundIE(this);}};window.masthead_ad_creative_iframe_1_onload = function() {if (!loaded()) {setTimeout(masthead_ad_creative_iframe_1_onload, 50);return;}yt.www.home.ads.workaroundLoad();};})();</script>
+						
+						        <iframe width="970" scrolling="no" height="250" frameborder="0" onfocus="masthead_ad_creative_iframe_1_workaround(this)" onmouseover="masthead_ad_creative_iframe_1_workaround(this)" onload="masthead_ad_creative_iframe_1_onload();" style="z-index: 1" src="http://ad.doubleclick.net/N4061/adi/com.ythome/_default;sz=970x250;tile=1;dc_yt=1;k21=1;kage=30;kar=4;kauth=1;kbsg=HPBR131014;kga=1002;kgender=m;kgg=1;klg=pt;kmyd=ad_creative_1;ord=9235516026646384?" id="ad_creative_iframe_1"></iframe>
+						          <script>
+						    (function() {
+						      function tagMpuIframe() {
+						            var adIframe = document.getElementById("ad_creative_iframe_1");
+						            if (!adIframe) {
+						              return;
+						            }
+						            var ord = Math.floor(Math.random() * 10000000000000000);
+						            adIframe.src = "http://ad.doubleclick.net/N4061/adi/com.ythome/_default;sz=970x250;tile=1;dc_yt=1;k21=1;kage=30;kar=4;kauth=1;kbsg=HPBR131014;kga=1002;kgender=m;kgg=1;klg=pt;kmyd=ad_creative_1;ord=" + ord + "?";
+						      }
+						
+						       tagMpuIframe();
+						    })();
+						  </script>
+		    		</div>
+			    </p:outputPanel>
+			    
 				<div class="row-fluid">
-				
+					
 	 				<h:form id="formVeiculo" prependId="false">
 		 				<ui:repeat var="anuncio" value="#{homeControlador.anuncios}">
 							<div class="span2 thumbnail thumbcars">
@@ -31,12 +54,10 @@
 								</div>
 								<p:spacer width="10px"></p:spacer>
 							</div>
-							
 		 				</ui:repeat>
 					</h:form>
 					
 				</div>
-				
 			</div>
 		</div>
 		</ui:define>	

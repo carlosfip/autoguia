@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -33,9 +34,11 @@ import br.com.anexo.util.AtributoConsultaAutomaticaDTO;
 import br.com.anexo.util.ConsultaAutomaticaDTO;
 import br.com.anexo.util.OperadoStringConsulta;
 import br.com.anexo.util.SearchLuceneResult;
+import br.com.anexo.util.SimpleQuery;
 import br.com.twsoftware.alfred.object.Objeto;
 import br.com.twsoftware.alfred.reflexao.Reflexao;
 
+import com.google.common.base.Joiner;
 import com.google.common.base.Splitter;
 
 public abstract class GenericDAO<T, ID extends Serializable> implements IGenericDAO<T, ID> {
@@ -58,6 +61,11 @@ public abstract class GenericDAO<T, ID extends Serializable> implements IGeneric
     
     public GenericDAO() {
     	this.classe = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
+    }
+    
+    public List<T> busca(SimpleQuery sq) {
+
+         return createQuery(sq).getResultList();
     }
     
     public void adiciona(T obj) {
@@ -83,10 +91,28 @@ public abstract class GenericDAO<T, ID extends Serializable> implements IGeneric
 
    public List<T> listaTodos() {
 
-        CriteriaQuery query = em.getCriteriaBuilder().createQuery(classe);
+        CriteriaQuery<?> query = em.getCriteriaBuilder().createQuery(classe);
         query.from(classe);
-        return em.createQuery(query).getResultList();
+        return (List<T>) em.createQuery(query).getResultList();
    }
+   
+   private Query createQuery(SimpleQuery simpleQuery) {
+
+       String queryStr = simpleQuery.getQuery();
+
+       if (!simpleQuery.getClausulas().isEmpty()) {
+            queryStr += " where " + Joiner.on(" and ").skipNulls().join(simpleQuery.getClausulas());
+       }
+       
+       Query query = em.createQuery(queryStr);
+
+       Set<Map.Entry<String, Object>> set = simpleQuery.getParameters().entrySet();
+
+       for (Map.Entry<String, Object> entry : set) {
+            query.setParameter(entry.getKey(), entry.getValue());
+       }
+       return query;
+  }
 
    public void executeProcedure(String nomeProcedure, List<Object> parametros) throws SQLException {
 

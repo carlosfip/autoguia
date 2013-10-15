@@ -78,7 +78,9 @@ public class Anuncio implements Serializable{
 	
 	@Getter
 	@Setter
-	private String estado;
+	@OneToOne
+	@JoinColumn(name="idestado")
+	private Estado estado;
 	
 	@Getter
 	@Setter

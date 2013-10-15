@@ -4,6 +4,19 @@ import lombok.Getter;
 import lombok.Setter;
 
 public class AnuncioXls {
+	
+	@Getter
+	@Setter
+	private String anunciante;
+	
+	@Getter
+	@Setter
+	private String email;
+	
+	@Getter
+	@Setter
+	private String cpfCnpj;
+	
 	@Getter
 	@Setter
 	private String marca;
