@@ -155,4 +155,5 @@ INSERT INTO t_imagem(
             idimagem, isimagemprincipal, urlimagem, idanuncio)
     VALUES (7, 'S','march2012.jpg', 6);
     
-alter table     
+alter table t_anuncio drop estado;
+alter table t_anuncio add idestado numeric(9);     
