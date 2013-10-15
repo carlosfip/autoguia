@@ -18,24 +18,11 @@ template="/paginas/templates/principal.xhtml">
 							<div id="myCarousel" class="carousel slide">
 								<!-- Carousel items -->
 								<div class="carousel-inner">
-									<div class="active item" data-slide-number="0">
-										<img src="../pics/thumbnails/1.gif" />
-									</div>
-									<div class="item" data-slide-number="1">
-										<img src="../pics/thumbnails/2.gif" />
-									</div>
-									<div class="item" data-slide-number="2">
-										<img src="../pics/thumbnails/3.gif" />
-									</div>
-									<div class="item" data-slide-number="3">
-										<img src="../pics/thumbnails/4.gif" />
-									</div>
-									<div class="item" data-slide-number="4">
-										<img src="../pics/thumbnails/5.gif" />
-									</div>
-									<div class="item" data-slide-number="5">
-										<img src="../pics/thumbnails/6.gif" />
-									</div>
+									<ui:repeat var="imagem" value="#{homeControlador.anuncio.imagens}" varStatus="status">
+										<div class="item" data-slide-number="#{status.index}">
+											<img src="../pics/#{imagem.urlimagem}" />
+										</div>
+									</ui:repeat>
 								</div>
 								<!-- Carousel nav -->
 								<a class="carousel-control left" href="#myCarousel" data-slide="prev">&#8249;</a>
@@ -51,41 +38,6 @@ template="/paginas/templates/principal.xhtml">
 									October 24 2012 - <a href="#">Read more</a>
 								</p>
 							</div>
-							<div id="slide-content-1">
-								<h2>Slider Two</h2>
-								<p>Lorem Ipsum Dolor</p>
-								<p class="sub-text">
-									October 24 2012 - <a href="#">Read more</a>
-								</p>
-							</div>
-							<div id="slide-content-2">
-								<h2>Slider Three</h2>
-								<p>Lorem Ipsum Dolor</p>
-								<p class="sub-text">
-									October 24 2012 - <a href="#">Read more</a>
-								</p>
-							</div>
-							<div id="slide-content-3">
-								<h2>Slider Four</h2>
-								<p>Lorem Ipsum Dolor</p>
-								<p class="sub-text">
-									October 24 2012 - <a href="#">Read more</a>
-								</p>
-							</div>
-							<div id="slide-content-4">
-								<h2>Slider Five</h2>
-								<p>Lorem Ipsum Dolor</p>
-								<p class="sub-text">
-									October 24 2012 - <a href="#">Read more</a>
-								</p>
-							</div>
-							<div id="slide-content-5">
-								<h2>Slider Six</h2>
-								<p>Lorem Ipsum Dolor</p>
-								<p class="sub-text">
-									October 24 2012 - <a href="#">Read more</a>
-								</p>
-							</div>
 						</div>
 					</div>
 				</div>
@@ -96,43 +48,22 @@ template="/paginas/templates/principal.xhtml">
 				<div class="span12">
 					<!-- Bottom switcher of slider -->
 					<ul class="thumbnails">
-						<li class="span2">
-							<a class="thumbnail" id="carousel-selector-0">
-								<img src="../pics/thumbnails/m1.gif" />
-							</a>
-						</li>
-						<li class="span2">
-							<a class="thumbnail" id="carousel-selector-1">
-								<img src="../pics/thumbnails/m2.gif" />
-							</a>
-						</li>
-						<li class="span2">
-							<a class="thumbnail" id="carousel-selector-2">
-								<img src="../pics/thumbnails/m3.gif" />
-							</a>
-						</li>
-						<li class="span2">
-							<a class="thumbnail" id="carousel-selector-3">
-								<img src="../pics/thumbnails/m4.gif" />
-							</a>
-						</li>
-						<li class="span2">
-							<a class="thumbnail" id="carousel-selector-4">
-								<img src="../pics/thumbnails/m5.gif" />
-							</a>
-						</li>
-						<li class="span2">
-							<a class="thumbnail" id="carousel-selector-5">
-								<img src="../pics/thumbnails/m6.gif" />
-							</a>
-						</li>
+						<ui:repeat var="imagem" value="#{homeControlador.anuncio.imagens}" varStatus="status">
+							<li class="span2">
+								<a class="thumbnail" id="carousel-selector-#{status.index}">
+									<img src="../pics/#{imagem.urlimagem}" />
+								</a>
+							</li>
+						</ui:repeat>
 					</ul>
 				</div>
 			</div>
-			<script>
+			<script type="text/javascript">
+				$('div.item:first').attr('class','active item');
+				
 				$(document).ready(function($) {
 					$('#myCarousel').carousel({
-						interval: 5000
+						interval: 3000
 					});
 					$('#carousel-text').html($('#slide-content-0').html());
 			        //Handles the carousel thumbnails
@@ -143,10 +74,10 @@ template="/paginas/templates/principal.xhtml">
 		                $('#myCarousel').carousel(id);
 			        });
 			        // When the carousel slides, auto update the text
-			        $('#myCarousel').on('slid', function (e) {
+			        /* $('#myCarousel').on('slid', function (e) {
 		                var id = $('.item.active').data('slide-number');
 		                $('#carousel-text').html($('#slide-content-'+id).html());
-			        });
+			        }); */
 				});
 			</script>
 		</h:form>
