@@ -60,6 +60,8 @@ CREATE TABLE T_ANUNCIO (
     CONSTRAINT ID_VEICULO_FK FOREIGN KEY(IDVEICULO) REFERENCES T_VEICULO(IDVEICULO)
 );
 
+alter table t_anuncio drop column estado;
+alter table t_anuncio add column idestado numeric(9);
 
 insert into t_usuario values (1,'iusdhiaushdiuashdius','Jimmota na Motoca', to_date('03/04/1991','dd/mm/yyyy'),'08007386408','jimmotanamotoca@gmail.com');
 
@@ -152,3 +154,5 @@ INSERT INTO t_imagem(
 INSERT INTO t_imagem(
             idimagem, isimagemprincipal, urlimagem, idanuncio)
     VALUES (7, 'S','march2012.jpg', 6);
+    
+alter table     

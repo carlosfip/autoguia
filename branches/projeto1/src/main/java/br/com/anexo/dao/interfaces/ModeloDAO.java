@@ -10,4 +10,6 @@ public interface ModeloDAO extends IGenericDAO<Modelo, Long>{
 
 	List<Modelo> listarByMarca(Integer id);
 
+	List<Modelo> listarPorNomeModelo(String modelo) throws Exception;
+
 }

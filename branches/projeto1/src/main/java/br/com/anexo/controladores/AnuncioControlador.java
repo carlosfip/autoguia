@@ -1,13 +1,11 @@
 package br.com.anexo.controladores;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -16,11 +14,6 @@ import javax.faces.context.FacesContext;
 import lombok.Getter;
 import lombok.Setter;
 
-import org.apache.poi.hssf.usermodel.HSSFCell;
-import org.apache.poi.hssf.usermodel.HSSFRow;
-import org.apache.poi.hssf.usermodel.HSSFSheet;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.hssf.util.CellReference;
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.DualListModel;
 import org.primefaces.model.UploadedFile;
@@ -49,6 +42,7 @@ import br.com.anexo.entidades.Versao;
 import br.com.anexo.util.FacesUtil;
 import br.com.anexo.xls.AnuncioXls;
 import br.com.anexo.xls.ImportarDadosXls;
+import br.com.twsoftware.alfred.object.Objeto;
 
 @Controller
 @Scope("session")
@@ -169,19 +163,107 @@ public class AnuncioControlador implements Serializable {
 	
 	public void uploadExcel(FileUploadEvent event) {
 		UploadedFile file = event.getFile();
-        if (file.getSize() > 10000000) {
-        	FacesUtil.adicionarErro("Arquivo muito grande.");
-             return;
-        }
-        try {
+		if (file.getSize() > 10000000) {
+			FacesUtil.adicionarErro("Arquivo muito grande.");
+			return;
+		}
+		try {
 			InputStream stream = file.getInputstream();
 			ImportarDadosXls dados = new ImportarDadosXls();
 			List<AnuncioXls> anunciosXls = dados.importarDadosArquivo(stream);
+			try {
+				System.out.println(anunciosXls);
+				for (AnuncioXls anuncioXls : anunciosXls) {
+					Veiculo veiculo = new Veiculo();
+					veiculo.setAnoVersao(anuncioXls.getAnoVersao());
+					veiculo.setAno(anuncioXls.getAnoFabricacao());
+					veiculo.setCor(anuncioXls.getCor());
+					List<Modelo> lista = modeloDAO
+							.listarPorNomeModelo(anuncioXls.getModelo());
+					boolean marcouVersao = false;
+					for (Modelo modelo : lista) {
+						for (Versao versao : modelo.getVersoes()) {
+							if (versao.getNome().equals(anuncioXls.getVersao())) {
+								veiculo.setModelo(modelo);
+								marcouVersao = true;
+								break;
+							}
+						}
+						if (marcouVersao) {
+							break;
+						}
+					}
+					Usuario usuario = new Usuario();
+					usuario.setId(1L);
+					Anuncio anuncio = new Anuncio();
+					anuncio.setUsuario(usuario);
+					anuncio.setVeiculo(veiculo);
+
+					anuncio.setTipo(Anuncio.REVENDA);
+					anuncio.setEmail(anuncioXls.getEmail());
+					
+					cidade = cidadeDAO.obterCidade(anuncioXls.getUf(),
+							anuncioXls.getCidade());
+					anuncio.setCidade(cidade.getNome());
+					anuncio.setEstado(cidade.getEstado());
+					
+					/*List<String> imgs = new ArrayList<>();
+					if (Objeto.notBlank(anuncioXls.getImagemPrincipal())){						
+						Imagem imagem = new Imagem();
+						imagem.setAnuncio(anuncio);
+						imagem.setUrlimagem(file.getFileName());
+						if (imagens== null){
+							imagens = new ArrayList<>();
+							imagem.setIsimagemprincipal("S");
+						}else{				
+							imagem.setIsimagemprincipal("N");
+						}
+						anuncio.getImagens().add(imagem);
+					}
+					if (Objeto.notBlank(anuncioXls.getImagemPrincipal())){
+						imgs.add(anuncioXls.getImagemPrincipal());
+					}
+					if (Objeto.notBlank(anuncioXls.getImagemPrincipal())){						
+						imgs.add(anuncioXls.getImagemPrincipal());
+					}
+					if (Objeto.notBlank(anuncioXls.getImagemPrincipal())){						
+						imgs.add(anuncioXls.getImagemPrincipal());
+					}
+					if (Objeto.notBlank(anuncioXls.getImagemPrincipal())){						
+						imgs.add(anuncioXls.getImagemPrincipal());
+					}
+					if (Objeto.notBlank(anuncioXls.getImagemPrincipal())){						
+						imgs.add(anuncioXls.getImagemPrincipal());
+					}
+					if (Objeto.notBlank(anuncioXls.getImagemPrincipal())){						
+						imgs.add(anuncioXls.getImagemPrincipal());
+					}
+					Imagem imagem = new Imagem();
+					imagem.setAnuncio(anuncio);
+					imagem.setUrlimagem(file.getFileName());
+					if (imagens== null){
+						imagens = new ArrayList<>();
+						imagem.setIsimagemprincipal("S");
+					}else{				
+						imagem.setIsimagemprincipal("N");
+					}
+					anuncio.getImagens().add(imagem);*/
+					
+					
+					//anuncioDAO.cadastrar(anuncio);
+
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+				FacesUtil.adicionarErro("Bug");
+			}
 			System.out.println(anunciosXls);
-			FacesUtil.adicionarSucesso("Anuncios Realizados com Sucesso!");
-        }catch(Exception e){
-        	e.printStackTrace();
-        }
+		} catch (Exception e) {
+			FacesUtil.adicionarErro("Bug");
+			e.printStackTrace();
+			return;
+		}
+		FacesUtil.adicionarSucesso("Anuncios Realizados com Sucesso!");
 	}
 	public void upload(FileUploadEvent event) {  
 		UploadedFile file = event.getFile();
@@ -346,7 +428,7 @@ public class AnuncioControlador implements Serializable {
 			anuncio.setEmail("jimmotanamotoca@gmail.com");
 			cidade = cidadeDAO.obter(getCidade().getId());
 			anuncio.setCidade(cidade.getNome());
-			anuncio.setEstado(estado.getSigla());
+			anuncio.setEstado(cidade.getEstado());
 			
 			anuncioDAO.cadastrar(anuncio);
 			

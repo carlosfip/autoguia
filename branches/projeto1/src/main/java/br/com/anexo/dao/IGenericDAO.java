@@ -11,6 +11,8 @@ import br.com.anexo.util.SearchLuceneResult;
 public interface IGenericDAO<T, ID extends Serializable> {
 
 	public void adiciona(T obj);
+	
+//	public List<T> busca(SimpleQuery sq);
 
 	public void remove(T obj);
 

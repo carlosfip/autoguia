@@ -10,4 +10,6 @@ public interface CidadeDAO extends IGenericDAO<Cidade, Long>{
 
 	List<Cidade> listarPorEstado(Integer id);
 
+	Cidade obterCidade(String uf, String cidade) throws Exception;
+
 }
