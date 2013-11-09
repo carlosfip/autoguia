@@ -7,6 +7,7 @@ xmlns:p="http://primefaces.org/ui"
 xmlns:f="http://java.sun.com/jsf/core" 
 template="/paginas/templates/principal.xhtml">
 	<ui:define name="conteudo">
+	
 		<h:form>
 			<!-- Main Area -->
 			<!-- Slider -->
@@ -14,29 +15,81 @@ template="/paginas/templates/principal.xhtml">
 				<div class="span12" id="slider">
 					<!-- Top part of the slider -->
 					<div class="row">
-						<div class="span8" id="carousel-bounding-box">
+						<div class="span6" id="carousel-bounding-box">
 							<div id="myCarousel" class="carousel slide">
 								<!-- Carousel items -->
 								<div class="carousel-inner">
 									<ui:repeat var="imagem" value="#{homeControlador.anuncio.imagens}" varStatus="status">
 										<div class="item" data-slide-number="#{status.index}">
-											<img src="../pics/#{imagem.urlimagem}" />
+											<img src="../pics/#{imagem.urlimagem}" width="550" height="400" />
 										</div>
 									</ui:repeat>
 								</div>
 								<!-- Carousel nav -->
-								<a class="carousel-control left" href="#myCarousel" data-slide="prev">&#8249;</a>
-								<a class="carousel-control right" href="#myCarousel" data-slide="next">&#8250;</a>
+								<!-- <a class="carousel-control left" href="#myCarousel" data-slide="prev">&#8249;</a>
+								<a class="carousel-control right" href="#myCarousel" data-slide="next">&#8250;</a> -->
 							</div>
 						</div>
-						<div class="span4" id="carousel-text"></div>
+						<div class="span6" id="carousel-text"></div>
 						<div style="display: none;" id="slide-content">
 							<div id="slide-content-0">
-								<h2>Slider One</h2>
-								<p>Lorem Ipsum Dolor</p>
-								<p class="sub-text">
-									October 24 2012 - <a href="#">Read more</a>
-								</p>
+								<table class="table table-striped">
+									<tr>
+										<td>
+											<p>Marca</p>
+										</td>
+										<td>
+											<p>
+												<h:outputText value="#{homeControlador.anuncio.veiculo.modelo.marca.nome}" />
+											</p>
+										</td>										
+									</tr>
+									<tr>
+										<td>
+											<p>Veiculo</p>
+										</td>
+										<td>
+											<p>
+												<h:outputText value="#{homeControlador.anuncio.veiculo.modelo.nome} #{homeControlador.anuncio.veiculo.anoVersao}" />
+											</p>
+										</td>										
+									</tr>
+									<tr>
+										<td>
+											<p>Preco</p>
+										</td>
+										<td>
+											<p>
+												<h:outputText value="R$" />
+												<h:outputText value="#{homeControlador.anuncio.preco}">
+													<f:converter converterId="moneyConverter"></f:converter>
+												</h:outputText>
+											</p>
+										</td>										
+									</tr>
+									<tr>
+										<td>
+											<p>Quilometragem</p>
+										</td>
+										<td>
+											<p>
+												<h:outputText value="#{homeControlador.anuncio.quilometragem}">
+													<f:convertNumber locale="pt_BR" />
+												</h:outputText>
+											</p>
+										</td>										
+									</tr>
+									<tr>
+										<td>
+											<p>Cor</p>
+										</td>
+										<td>
+											<p>
+												<h:outputText value="#{homeControlador.anuncio.veiculo.cor}" />
+											</p>
+										</td>										
+									</tr>
+								</table>
 							</div>
 						</div>
 					</div>
@@ -58,26 +111,49 @@ template="/paginas/templates/principal.xhtml">
 					</ul>
 				</div>
 			</div>
+			
+			<!-- <div class="row">
+				<div class=""></div>
+				<div class="thumbnail">
+					<p:gmap  center="41.381542, 2.122893" zoom="15" type="HYBRID"
+						style="width:100%;height:400px" streetView="true"/>
+					<div class="caption">
+						<p><h:outputText value="Cidade: #{homeControlador.anuncio.cidade}" /></p>
+						<p><h:outputText value="Cidade: #{homeControlador.anuncio.cidade}" /></p>
+					</div>
+				</div>
+			</div> -->
+			
+			<div class="row">
+				<h:panelGrid>
+					<m:map width="500px" height="500px"
+						address="Giza, Egypt">
+						<m:marker />
+						<m:htmlInformationWindow htmlText="Giza, Egypt" />
+					</m:map>
+				</h:panelGrid>
+			</div>
+			
 			<script type="text/javascript">
-				$('div.item:first').attr('class','active item');
-				
+				$('div.item:first').attr('class', 'active item');
+
 				$(document).ready(function($) {
 					$('#myCarousel').carousel({
-						interval: 3000
+						interval : 5000
 					});
 					$('#carousel-text').html($('#slide-content-0').html());
-			        //Handles the carousel thumbnails
-			        $('[id^=carousel-selector-]').click( function(){
-		                var id_selector = $(this).attr("id");
-		                var id = id_selector.substr(id_selector.length -1);
-		                var id = parseInt(id);
-		                $('#myCarousel').carousel(id);
-			        });
-			        // When the carousel slides, auto update the text
-			        /* $('#myCarousel').on('slid', function (e) {
-		                var id = $('.item.active').data('slide-number');
-		                $('#carousel-text').html($('#slide-content-'+id).html());
-			        }); */
+					//Handles the carousel thumbnails
+					$('[id^=carousel-selector-]').click(function() {
+						var id_selector = $(this).attr("id");
+						var id = id_selector.substr(id_selector.length - 1);
+						var id = parseInt(id);
+						$('#myCarousel').carousel(id);
+					});
+					// When the carousel slides, auto update the text
+					/* $('#myCarousel').on('slid', function (e) {
+					    var id = $('.item.active').data('slide-number');
+					    $('#carousel-text').html($('#slide-content-'+id).html());
+					}); */
 				});
 			</script>
 		</h:form>
